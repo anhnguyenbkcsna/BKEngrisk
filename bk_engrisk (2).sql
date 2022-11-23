@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 23, 2022 lúc 06:18 AM
+-- Thời gian đã tạo: Th10 23, 2022 lúc 07:53 AM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.1
 
@@ -28,8 +28,6 @@ USE `bk_engrisk`;
 --
 -- Cấu trúc bảng cho bảng `baikiemtra`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
---
 
 DROP TABLE IF EXISTS `baikiemtra`;
 CREATE TABLE IF NOT EXISTS `baikiemtra` (
@@ -44,8 +42,6 @@ CREATE TABLE IF NOT EXISTS `baikiemtra` (
 --
 -- Cấu trúc bảng cho bảng `bangcap`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
---
 
 DROP TABLE IF EXISTS `bangcap`;
 CREATE TABLE IF NOT EXISTS `bangcap` (
@@ -57,8 +53,6 @@ CREATE TABLE IF NOT EXISTS `bangcap` (
 
 --
 -- Cấu trúc bảng cho bảng `chinhanh`
---
--- Tạo: Th10 23, 2022 lúc 05:09 AM
 --
 
 DROP TABLE IF EXISTS `chinhanh`;
@@ -77,8 +71,6 @@ CREATE TABLE IF NOT EXISTS `chinhanh` (
 --
 -- Cấu trúc bảng cho bảng `chungchi`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
---
 
 DROP TABLE IF EXISTS `chungchi`;
 CREATE TABLE IF NOT EXISTS `chungchi` (
@@ -90,8 +82,6 @@ CREATE TABLE IF NOT EXISTS `chungchi` (
 
 --
 -- Cấu trúc bảng cho bảng `chuongtrinhhoc`
---
--- Tạo: Th10 23, 2022 lúc 05:09 AM
 --
 
 DROP TABLE IF EXISTS `chuongtrinhhoc`;
@@ -107,9 +97,35 @@ CREATE TABLE IF NOT EXISTS `chuongtrinhhoc` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `congtac_nv`
+-- Cấu trúc bảng cho bảng `cn_cth`
 --
--- Tạo: Th10 23, 2022 lúc 05:13 AM
+
+DROP TABLE IF EXISTS `cn_cth`;
+CREATE TABLE IF NOT EXISTS `cn_cth` (
+  `chinhanhMaCN` varchar(255) NOT NULL,
+  `MaCT` varchar(255) NOT NULL,
+  PRIMARY KEY (`chinhanhMaCN`,`MaCT`),
+  KEY `MaCT` (`MaCT`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `cn_nv`
+--
+
+DROP TABLE IF EXISTS `cn_nv`;
+CREATE TABLE IF NOT EXISTS `cn_nv` (
+  `chinhanhMaCN` varchar(255) NOT NULL,
+  `MaNV` varchar(255) NOT NULL,
+  PRIMARY KEY (`chinhanhMaCN`,`MaNV`),
+  KEY `cn_nv_ibfk_1` (`MaNV`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `congtac_nv`
 --
 
 DROP TABLE IF EXISTS `congtac_nv`;
@@ -122,9 +138,21 @@ CREATE TABLE IF NOT EXISTS `congtac_nv` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `dangky`
+-- Cấu trúc bảng cho bảng `cth_kh`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
+
+DROP TABLE IF EXISTS `cth_kh`;
+CREATE TABLE IF NOT EXISTS `cth_kh` (
+  `MaCT` varchar(255) NOT NULL,
+  `MaKH` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaCT`,`MaKH`),
+  KEY `cth_kh_ibfk_2` (`MaKH`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `dangky`
 --
 
 DROP TABLE IF EXISTS `dangky`;
@@ -139,22 +167,19 @@ CREATE TABLE IF NOT EXISTS `dangky` (
 --
 -- Cấu trúc bảng cho bảng `giangday`
 --
--- Tạo: Th10 23, 2022 lúc 05:15 AM
---
 
 DROP TABLE IF EXISTS `giangday`;
 CREATE TABLE IF NOT EXISTS `giangday` (
-  `MaKH` varchar(255) NOT NULL,
+  `MaLH` varchar(255) NOT NULL,
   `MaNV` varchar(255) NOT NULL,
-  PRIMARY KEY (`MaKH`,`MaNV`)
+  PRIMARY KEY (`MaLH`,`MaNV`),
+  KEY `giangday_ibfk_1` (`MaNV`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
 -- Cấu trúc bảng cho bảng `giaotrinh`
---
--- Tạo: Th10 23, 2022 lúc 05:09 AM
 --
 
 DROP TABLE IF EXISTS `giaotrinh`;
@@ -170,8 +195,6 @@ CREATE TABLE IF NOT EXISTS `giaotrinh` (
 --
 -- Cấu trúc bảng cho bảng `giaovien`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
---
 
 DROP TABLE IF EXISTS `giaovien`;
 CREATE TABLE IF NOT EXISTS `giaovien` (
@@ -186,8 +209,6 @@ CREATE TABLE IF NOT EXISTS `giaovien` (
 --
 -- Cấu trúc bảng cho bảng `hocbong`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
---
 
 DROP TABLE IF EXISTS `hocbong`;
 CREATE TABLE IF NOT EXISTS `hocbong` (
@@ -201,8 +222,6 @@ CREATE TABLE IF NOT EXISTS `hocbong` (
 
 --
 -- Cấu trúc bảng cho bảng `hocphi`
---
--- Tạo: Th10 23, 2022 lúc 05:09 AM
 --
 
 DROP TABLE IF EXISTS `hocphi`;
@@ -223,8 +242,6 @@ CREATE TABLE IF NOT EXISTS `hocphi` (
 --
 -- Cấu trúc bảng cho bảng `hocvien`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
---
 
 DROP TABLE IF EXISTS `hocvien`;
 CREATE TABLE IF NOT EXISTS `hocvien` (
@@ -238,8 +255,6 @@ CREATE TABLE IF NOT EXISTS `hocvien` (
 --
 -- Cấu trúc bảng cho bảng `ketquahoctap`
 --
--- Tạo: Th10 23, 2022 lúc 05:15 AM
---
 
 DROP TABLE IF EXISTS `ketquahoctap`;
 CREATE TABLE IF NOT EXISTS `ketquahoctap` (
@@ -252,9 +267,21 @@ CREATE TABLE IF NOT EXISTS `ketquahoctap` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `khuyenmai`
+-- Cấu trúc bảng cho bảng `khoahoc`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
+
+DROP TABLE IF EXISTS `khoahoc`;
+CREATE TABLE IF NOT EXISTS `khoahoc` (
+  `MaKH` varchar(255) NOT NULL,
+  `SiSo` int(11) NOT NULL,
+  `MaCN` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaKH`,`MaCN`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `khuyenmai`
 --
 
 DROP TABLE IF EXISTS `khuyenmai`;
@@ -270,23 +297,47 @@ CREATE TABLE IF NOT EXISTS `khuyenmai` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `muctieucth`
+-- Cấu trúc bảng cho bảng `kh_lh`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
+
+DROP TABLE IF EXISTS `kh_lh`;
+CREATE TABLE IF NOT EXISTS `kh_lh` (
+  `MaKH` varchar(255) NOT NULL,
+  `MaLH` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaKH`,`MaLH`),
+  KEY `kh_lh_ibfk_2` (`MaLH`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `lophoc`
+--
+
+DROP TABLE IF EXISTS `lophoc`;
+CREATE TABLE IF NOT EXISTS `lophoc` (
+  `MaLH` varchar(255) NOT NULL,
+  `NoiDung` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaLH`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `muctieucth`
 --
 
 DROP TABLE IF EXISTS `muctieucth`;
 CREATE TABLE IF NOT EXISTS `muctieucth` (
   `MucTieu` varchar(255) NOT NULL,
-  `MaCT` varchar(255) NOT NULL
+  `MaCT` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaCT`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
 -- Cấu trúc bảng cho bảng `nhanvien`
---
--- Tạo: Th10 23, 2022 lúc 05:09 AM
 --
 
 DROP TABLE IF EXISTS `nhanvien`;
@@ -301,9 +352,21 @@ CREATE TABLE IF NOT EXISTS `nhanvien` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tacgia_gt`
+-- Cấu trúc bảng cho bảng `sudung`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
+
+DROP TABLE IF EXISTS `sudung`;
+CREATE TABLE IF NOT EXISTS `sudung` (
+  `MaGT` varchar(255) NOT NULL,
+  `MaCT` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaGT`,`MaCT`),
+  KEY `sudung_ibfk_1` (`MaCT`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tacgia_gt`
 --
 
 DROP TABLE IF EXISTS `tacgia_gt`;
@@ -317,8 +380,6 @@ CREATE TABLE IF NOT EXISTS `tacgia_gt` (
 
 --
 -- Cấu trúc bảng cho bảng `taikhoan`
---
--- Tạo: Th10 23, 2022 lúc 05:09 AM
 --
 
 DROP TABLE IF EXISTS `taikhoan`;
@@ -345,8 +406,6 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
 --
 -- Cấu trúc bảng cho bảng `thoikhoabieubh`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
---
 
 DROP TABLE IF EXISTS `thoikhoabieubh`;
 CREATE TABLE IF NOT EXISTS `thoikhoabieubh` (
@@ -361,8 +420,6 @@ CREATE TABLE IF NOT EXISTS `thoikhoabieubh` (
 --
 -- Cấu trúc bảng cho bảng `thoikhoabieukh`
 --
--- Tạo: Th10 23, 2022 lúc 05:09 AM
---
 
 DROP TABLE IF EXISTS `thoikhoabieukh`;
 CREATE TABLE IF NOT EXISTS `thoikhoabieukh` (
@@ -375,8 +432,6 @@ CREATE TABLE IF NOT EXISTS `thoikhoabieukh` (
 
 --
 -- Cấu trúc bảng cho bảng `trinhdo`
---
--- Tạo: Th10 23, 2022 lúc 05:16 AM
 --
 
 DROP TABLE IF EXISTS `trinhdo`;
@@ -391,10 +446,38 @@ CREATE TABLE IF NOT EXISTS `trinhdo` (
 --
 
 --
--- Các ràng buộc cho bảng `giaotrinh`
+-- Các ràng buộc cho bảng `chuongtrinhhoc`
 --
-ALTER TABLE `tacgia_gt`
-  ADD CONSTRAINT `tacgia_ibfk_1` FOREIGN KEY (`MaGT`) REFERENCES `giaotrinh` (`MaGT`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `chuongtrinhhoc`
+  ADD CONSTRAINT `chuongtrinhhoc_ibfk_1` FOREIGN KEY (`MaCT`) REFERENCES `muctieucth` (`MaCT`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `cn_cth`
+--
+ALTER TABLE `cn_cth`
+  ADD CONSTRAINT `cn_cth_ibfk_1` FOREIGN KEY (`MaCT`) REFERENCES `chuongtrinhhoc` (`MaCT`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cn_cth_ibfk_2` FOREIGN KEY (`chinhanhMaCN`) REFERENCES `chinhanh` (`MaCN`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `cn_nv`
+--
+ALTER TABLE `cn_nv`
+  ADD CONSTRAINT `cn_nv_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cn_nv_ibfk_2` FOREIGN KEY (`chinhanhMaCN`) REFERENCES `chinhanh` (`MaCN`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `cth_kh`
+--
+ALTER TABLE `cth_kh`
+  ADD CONSTRAINT `cth_kh_ibfk_1` FOREIGN KEY (`MaCT`) REFERENCES `chuongtrinhhoc` (`MaCT`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cth_kh_ibfk_2` FOREIGN KEY (`MaKH`) REFERENCES `khoahoc` (`MaKH`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `giangday`
+--
+ALTER TABLE `giangday`
+  ADD CONSTRAINT `giangday_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `giaovien` (`MaNV`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `giangday_ibfk_2` FOREIGN KEY (`MaLH`) REFERENCES `lophoc` (`MaLH`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `giaovien`
@@ -409,13 +492,39 @@ ALTER TABLE `hocvien`
   ADD CONSTRAINT `hocvien_ibfk_1` FOREIGN KEY (`MaHV`) REFERENCES `taikhoan` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Các ràng buộc cho bảng `ketquahoctap`
+--
+ALTER TABLE `ketquahoctap`
+  ADD CONSTRAINT `ketquahoctap_ibfk_1` FOREIGN KEY (`MaHV`) REFERENCES `hocvien` (`MaHV`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `kh_lh`
+--
+ALTER TABLE `kh_lh`
+  ADD CONSTRAINT `kh_lh_ibfk_1` FOREIGN KEY (`MaKH`) REFERENCES `khoahoc` (`MaKH`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `kh_lh_ibfk_2` FOREIGN KEY (`MaLH`) REFERENCES `lophoc` (`MaLH`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Các ràng buộc cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
   ADD CONSTRAINT `nhanvien_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `taikhoan` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `taikhoan`
+-- Các ràng buộc cho bảng `sudung`
+--
+ALTER TABLE `sudung`
+  ADD CONSTRAINT `sudung_ibfk_1` FOREIGN KEY (`MaCT`) REFERENCES `chuongtrinhhoc` (`MaCT`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sudung_ibfk_2` FOREIGN KEY (`MaGT`) REFERENCES `giaotrinh` (`MaGT`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `tacgia_gt`
+--
+ALTER TABLE `tacgia_gt`
+  ADD CONSTRAINT `tacgia_gt_ibfk_1` FOREIGN KEY (`MaGT`) REFERENCES `giaotrinh` (`MaGT`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `trinhdo`
 --
 ALTER TABLE `trinhdo`
   ADD CONSTRAINT `trinhdo_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `taikhoan` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;

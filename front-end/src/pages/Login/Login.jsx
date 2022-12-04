@@ -18,6 +18,8 @@ export default function Login() {
             username: userName,
             password: password,
         }).then((response) => {
+            console.log(response);
+            //response.data = 'client'
             if (response.statusText === 'OK') {
                 navigate("/home");
             }

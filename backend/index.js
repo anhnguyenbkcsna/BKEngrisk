@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require("cors");
 const mysql = require('mysql')
-
+const port = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.json());
@@ -33,6 +33,7 @@ app.post('/register', (req, res) => {
             } else {
                 console.log(result)
                 res.send(result);
+
             }
         }
     )
@@ -50,7 +51,8 @@ app.post('/login', (req, res) => {
                 res.send({ err: err })
             } else {
                 if (result) {
-                    res.send(result);
+                    // res.send(result);
+                    res.send('client');
                 } else {
                     res.send({ message: 'Wrong user or password' })
                 }
@@ -59,6 +61,6 @@ app.post('/login', (req, res) => {
     )
 })
 
-app.listen(3001, () => {
-    console.log('listening on 3001');
+app.listen(port, () => {
+    console.log(`listening on ${port}`);
 })

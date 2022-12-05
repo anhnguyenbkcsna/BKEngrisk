@@ -1,9 +1,9 @@
 <?php
-require_once('/xampp/htdocs/BKEngrisk/models/connection.php');
+require_once('connection.php');
 class User
 {
     public $email;
-    public $role;
+    public $profile_photo;
     public $fname;
     public $lname;
     public $gender;
@@ -12,9 +12,8 @@ class User
     public $createAt;
     public $updateAt;
     public $password;
-    public $profile_photo;
 
-    public function __construct($email, $role, $fname, $lname, $gender, $age, $phone, $createAt, $updateAt, $profile_photo, $password)
+    public function __construct($email, $profile_photo, $fname, $lname, $gender, $age, $phone, $createAt, $updateAt, $password)
     {
         $this->email = $email;
         $this->profile_photo = $profile_photo;
@@ -26,7 +25,6 @@ class User
         $this->createAt = $createAt;
         $this->updateAt = $updateAt;
         $this->password = $password;
-        $this->role = $role;
     }
 
     static function getAll()
@@ -40,7 +38,7 @@ class User
         foreach ($req->fetch_all(MYSQLI_ASSOC) as $user) {
             $users[] = new User(
                 $user['email'],
-                $role['role'],
+                $user['profile_photo'],
                 $user['fname'],
                 $user['lname'],
                 $user['gender'],
@@ -48,7 +46,6 @@ class User
                 $user['phone'],
                 $user['createAt'],
                 $user['updateAt'],
-                $user['profile_photo'],
                 '' // Do not return password
             );
         }
@@ -68,7 +65,7 @@ class User
         $result = $req->fetch_assoc();
         $user = new User(
             $result['email'],
-            $role['role'],
+            $result['profile_photo'],
             $result['fname'],
             $result['lname'],
             $result['gender'],
@@ -76,20 +73,27 @@ class User
             $result['phone'],
             $result['createAt'],
             $result['updateAt'],
-            $result['profile_photo'],
             '' // Do not return password
         );
         return $user;
     }
 
-    static function insert($email, $profile_photo, $fname, $lname, $gender, $age, $phone, $password, $role)
+    static function getRole($username)
+    {
+        $db = DB::getInstance();
+        $req = $db->query("SELECT role FROM user WHERE email = '$username'");
+        $result = $req->fetch_assoc();
+        return $result['role'];
+    }
+
+    static function insert($email, $profile_photo, $fname, $lname, $gender, $age, $phone, $password)
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
         $db = DB::getInstance();
         $req = $db->query(
             "
-            INSERT INTO user (email, role, fname, lname, gender, age, phone, createAt, updateAt, profile_photo, password)
-            VALUES ('$email', '$role', '$fname', '$lname', $gender, $age, '$phone', NOW(), NOW(), '$profile_photo', '$password')
+            INSERT INTO user (email, profile_photo, fname, lname, gender, age, phone, createAt, updateAt, password)
+            VALUES ('$email', '$profile_photo', '$fname', '$lname', $gender, $age, '$phone', NOW(), NOW(), '$password')
             ;"
         );
         return $req;

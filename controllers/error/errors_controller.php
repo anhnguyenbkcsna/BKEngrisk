@@ -1,9 +1,10 @@
 <?php
-class ErrorsController
+class ErrorsController  
 {
-    public function index()
-    {
-        $view_file = '/xampp/htdocs/BKEngrisk/views/error/index.php';
-        require_once($view_file);
-    }
+	public function index()
+	{
+		$view_file = 'views/error/index.php';	
+		require_once($view_file);
+	}
+
 }

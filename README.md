@@ -1,10 +1,11 @@
-# BKEngrisk
-Database's assignment
 
-role:
-0: main admin 
-1: manager
-2: teacher/ ta
-3: guest
+Role:
+0: Admin
+1: Manager 
+2: Teacher
+3: Student - Guest
 
-admin@gmail.com admin
+
+0 admin -- admin 
+3 tan@gmail.com -- tan
+

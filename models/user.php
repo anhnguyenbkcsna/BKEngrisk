@@ -7,23 +7,26 @@ class User
     public $fname;
     public $lname;
     public $gender;
-    public $age;
+    public $yob;
     public $phone;
+    public $address;
     public $createAt;
     public $updateAt;
+    public $role;
     public $password;
-
-    public function __construct($email, $profile_photo, $fname, $lname, $gender, $age, $phone, $createAt, $updateAt, $password)
+    public function __construct($email, $profile_photo, $fname, $lname, $gender, $yob, $phone, $address, $createAt, $updateAt, $role, $password)
     {
         $this->email = $email;
         $this->profile_photo = $profile_photo;
         $this->fname = $fname;
         $this->lname = $lname;
         $this->gender = $gender;
-        $this->age = $age;
+        $this->yob = $yob;
         $this->phone = $phone;
+        $this->address = $address;
         $this->createAt = $createAt;
         $this->updateAt = $updateAt;
+        $this->role = $role;
         $this->password = $password;
     }
 
@@ -42,10 +45,12 @@ class User
                 $user['fname'],
                 $user['lname'],
                 $user['gender'],
-                $user['age'],
+                $user['yob'],
                 $user['phone'],
+                $user['address'],
                 $user['createAt'],
                 $user['updateAt'],
+                $user['role'],
                 '' // Do not return password
             );
         }
@@ -57,7 +62,7 @@ class User
         $db = DB::getInstance();
         $req = $db->query(
             "
-            SELECT email, profile_photo, fname, lname, gender, age, phone, createAt, updateAt 
+            SELECT email, profile_photo, fname, lname, gender, yob, phone, createAt, updateAt, role
             FROM user
             WHERE email = '$email'
             ;"
@@ -69,10 +74,12 @@ class User
             $result['fname'],
             $result['lname'],
             $result['gender'],
-            $result['age'],
+            $result['yob'],
             $result['phone'],
+            $result['address'],
             $result['createAt'],
             $result['updateAt'],
+            $result['role'],
             '' // Do not return password
         );
         return $user;
@@ -86,14 +93,14 @@ class User
         return $result['role'];
     }
 
-    static function insert($email, $profile_photo, $fname, $lname, $gender, $age, $phone, $password)
+    static function insert($email, $profile_photo, $fname, $lname, $gender, $yob, $phone, $password, $address)
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
         $db = DB::getInstance();
         $req = $db->query(
             "
-            INSERT INTO user (email, profile_photo, fname, lname, gender, age, phone, createAt, updateAt, password)
-            VALUES ('$email', '$profile_photo', '$fname', '$lname', $gender, $age, '$phone', NOW(), NOW(), '$password')
+            INSERT INTO user (email, profile_photo, fname, lname, gender, yob, phone, address, createAt, updateAt, password)
+            VALUES ('$email', '$profile_photo', '$fname', '$lname', $gender, $yob, '$phone',  '$address', NOW(), NOW(), '$password')
             ;"
         );
         return $req;
@@ -106,13 +113,13 @@ class User
         return $req;
     }
 
-    static function update($email, $profile_photo, $fname, $lname, $gender, $age, $phone)
+    static function update($email, $profile_photo, $fname, $lname, $gender, $yob, $phone, $address)
     {
         $db = DB::getInstance();
         $req = $db->query(
             "
             UPDATE user
-            SET profile_photo = '$profile_photo', fname = '$fname', lname = '$lname', gender = $gender, age = $age, phone = '$phone', updateAt = NOW()
+            SET profile_photo = '$profile_photo', fname = '$fname', lname = '$lname', gender = $gender, yob = $yob, phone = '$phone', address = '$address', updateAt = NOW()
             WHERE email = '$email'
             ;"
         );

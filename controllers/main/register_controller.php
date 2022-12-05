@@ -16,15 +16,16 @@ class RegisterController extends BaseController
 
 	public function submit()
 	{
-		$fname = $_POST['fname'];
-		$lname = $_POST['lname'];
-		$age = $_POST['age'];
-		$gender = $_POST['gender'];
-		$phone = $_POST['phone'];
 		$email = $_POST['email'];
 		$password = $_POST['pass'];
-		echo $fname . $lname . $age . $gender . $phone . $email . $password;
-		User::insert($email, 'public/img/user/default.png', $fname, $lname, $gender, $age, $phone, $password);
+		$fname = $_POST['fname'];
+		$lname = $_POST['lname'];
+		$yob = $_POST['yob'];
+		$gender = $_POST['gender'];
+		$phone = $_POST['phone'];
+		$address = $_POST['address'];
+		echo $fname . $lname . $yob . $gender . $phone . $email . $address . $password;
+		User::insert($email, 'public/img/user/default.png', $fname, $lname, $gender, $yob, $phone, $address, $password);
 		header('Location: index.php?page=main&controller=login&action=index');
 	}
 
@@ -35,8 +36,9 @@ class RegisterController extends BaseController
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
 		$gender = $_POST['gender'];
-		$age = $_POST['age'];
+		$yob = $_POST['yob'];
 		$phone = $_POST['phone'];
+		$address = $_POST['address'];
 		$urlcurrent = $_POST['img'];
 		// Photo
 		$target_dir = "public/img/user/";
@@ -66,7 +68,7 @@ class RegisterController extends BaseController
 		unlink($file_pointer);
 		move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 		// Update
-		$change_info = User::update($email, $target_file, $fname, $lname, $gender, $age, $phone);
+		$change_info = User::update($email, $target_file, $fname, $lname, $gender, $yob, $phone, $address);
 		header('Location: index.php?page=main&controller=layouts&action=index');
 	}
 

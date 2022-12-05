@@ -18,7 +18,6 @@ class LoginController extends BaseController
 			session_destroy();
 			header("Location: index.php?page=main&controller=login&action=index");
 		} else if (isset($_POST['submit-btn'])) {
-			session_start();
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			unset($_POST);
@@ -39,6 +38,7 @@ class LoginController extends BaseController
 				$err = "Sai tài khoản hoặc mật khẩu";
 				$data = array('err' => $err);
 				$this->render('index', $data);
+				session_destroy();
 			}
 		} else {
 			$this->render('index');
@@ -50,6 +50,6 @@ class LoginController extends BaseController
 		session_start();
 		unset($_SESSION["guest"]);
 		session_destroy();
-		header("Location: index.php?page=main&controller=login&action=index");
+		header("Location: index.php?page=main&controller=layouts&action=index");
 	}
 }

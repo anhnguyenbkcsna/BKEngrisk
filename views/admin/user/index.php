@@ -23,12 +23,12 @@ require_once('views/admin/content_layouts.php'); ?>
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Quản lý Liên hệ khách hàng</h1>
+                    <h1>Quản lý học viên</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="page=admin&controller=layouts&action=index">Home</a></li>
-                        <li class="breadcrumb-item active">Quản lý Liên hệ khách hàng</li>
+                        <li class="breadcrumb-item active">Quản lý học viên</li>
                     </ol>
                 </div>
             </div>
@@ -80,9 +80,9 @@ require_once('views/admin/content_layouts.php'); ?>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label>Tuổi</label>
+                                                            <label>Năm sinh</label>
                                                             <input class="form-control" type="number" placeholder="Tuổi"
-                                                                name="age" />
+                                                                name="yob" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -119,6 +119,11 @@ require_once('views/admin/content_layouts.php'); ?>
                                                     <input class="form-control" type="text" placeholder="Email"
                                                         name="email" />
                                                 </div>
+                                                <div class="form-group">
+                                                    <label>Địa chỉ</label>
+                                                    <input class="form-control" type="text" placeholder="Địa chỉ"
+                                                        name="address" />
+                                                </div>
 
                                                 <div class="form-group">
                                                     <label>Mật khẩu</label>
@@ -127,11 +132,12 @@ require_once('views/admin/content_layouts.php'); ?>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Hình ảnh</label>&nbsp
-                                                    <input type="file" name="fileToUpload" id="fileToUpload" />
+                                                    <input type="file" name="fileToUpload" id="fileToUpload"
+                                                        accept="image/png, image/jpeg" />
                                                 </div>
 
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class=" modal-footer">
                                                 <button class="btn btn-secondary" type="button"
                                                     data-dismiss="modal">Đóng lại</button>
                                                 <button class="btn btn-primary" type="submit">Thêm mới</button>
@@ -145,12 +151,12 @@ require_once('views/admin/content_layouts.php'); ?>
                                 <thead>
                                     <tr class="text-center">
                                         <th>STT</th>
-                                        <th>Họ và tên lót</th>
-                                        <th>Tên</th>
+                                        <th>Họ và tên </th>
                                         <th>Giới tính</th>
-                                        <th>Tuổi</th>
-                                        <th>Số điện thoại</th>
+                                        <th>Năm sinh</th>
                                         <th>Email</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Địa chỉ</th>
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
@@ -158,20 +164,22 @@ require_once('views/admin/content_layouts.php'); ?>
                                     <?php
                                     $index = 1;
                                     foreach ($user as $user) {
-                                        echo "<tr class='text-center' style='height:300px; line-height:300px; white-space: nowrap;'>";
-                                        echo "<td>" . $index++ . "</td>";
-                                        echo "<td>" . $user->fname . "</td>";
-                                        echo "<td>" . $user->lname . "</td>";
-                                        echo "<td>" . (($user->gender == 1) ? "Nam" : "Nữ") . "</td>";
-                                        echo "<td>" . $user->age . "</td>";
-                                        echo "<td>" . $user->phone . "</td>";
-                                        echo "<td>" . $user->email . "</td>";
-                                        echo "<td>
-											<btn data-toggle='tooltip' data-placement='top' title='Chỉnh sửa' class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-email='$user->email' data-fname='$user->fname' data-lname='$user->lname' data-gender='$user->gender' data-age='$user->age' data-phone='$user->phone' data-img='$user->profile_photo'> <i class='fas fa-edit'></i></btn>
-											<btn data-toggle='tooltip' data-placement='top' title='Đổi mật khẩu' class='btn-changepass btn btn-warning btn-xs' style='margin-right: 5px' data-email='$user->email'> <i class='fas fa-lock'></i></btn>
-											<btn data-toggle='tooltip' data-placement='top' title='Xóa tài khoản' class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-email='$user->email' data-img='$user->profile_photo'> <i class='fas fa-trash'></i></btn>
-											</td>";
-                                        echo "</tr>";
+                                        if ($user->role == 3) {
+                                            echo "<tr class='text-center' style='height:300px; line-height:300px; white-space: nowrap;'>";
+                                            echo "<td>" . $index++ . "</td>";
+                                            echo "<td>" . $user->fname . " " . $user->lname . "</td>";
+                                            echo "<td>" . (($user->gender == 1) ? "Nam" : "Nữ") . "</td>";
+                                            echo "<td>" . $user->yob . "</td>";
+                                            echo "<td>" . $user->email . "</td>";
+                                            echo "<td>" . $user->phone . "</td>";
+                                            echo "<td>" . $user->address . "</td>";
+                                            echo "<td>
+                                        	<btn data-toggle='tooltip' data-placement='top' title='Chỉnh sửa' class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-email='$user->email' data-fname='$user->fname' data-lname='$user->lname' data-gender='$user->gender' data-age='$user->yob' data-phone='$user->phone' data-img='$user->profile_photo'> <i class='fas fa-edit'></i></btn>
+                                        	<btn data-toggle='tooltip' data-placement='top' title='Đổi mật khẩu' class='btn-changepass btn btn-warning btn-xs' style='margin-right: 5px' data-email='$user->email'> <i class='fas fa-lock'></i></btn>
+                                        	<btn data-toggle='tooltip' data-placement='top' title='Xóa tài khoản' class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-email='$user->email' data-img='$user->profile_photo'> <i class='fas fa-trash'></i></btn>
+                                        	</td>";
+                                            echo "</tr>";
+                                        }
                                     }
                                     ?>
                                 </tbody>
@@ -212,7 +220,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label>Tuổi</label>
+                                                            <label>Năm sinh</label>
                                                             <input class="form-control" type="number" placeholder="Tuổi"
                                                                 name="age" />
                                                         </div>
@@ -245,6 +253,12 @@ require_once('views/admin/content_layouts.php'); ?>
                                                     <input class="form-control" type="number"
                                                         placeholder="Số điện thoại" name="phone" />
                                                 </div>
+                                                <div class="form-group">
+                                                    <label>Địa chỉ</label>
+                                                    <input class="form-control" type="address" placeholder="Địa chỉ"
+                                                        name="address" />
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label>Hình ảnh hiện tại </label>
                                                     <input class="form-control" type="text" name="img" readonly />
@@ -283,12 +297,12 @@ require_once('views/admin/content_layouts.php'); ?>
                                                         name="email" readonly />
                                                 </div>
 
-                                                <div class="form-group">
+                                                <!-- <div class="form-group">
                                                     <label> Password hiện tại</label>
                                                     <input class="form-control" type="password"
                                                         placeholder="Please enter your new password"
                                                         name="current-password" />
-                                                </div>
+                                                </div> -->
 
                                                 <div class="form-group">
                                                     <label>Password mới</label>

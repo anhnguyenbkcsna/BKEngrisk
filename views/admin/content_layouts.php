@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" href="index.php?page=admin&controller=login&action=logout">Logout</a>
+                    <a class="nav-link" href="index.php?page=main&controller=login&action=logout">Logout</a>
                 </li>
             </ul>
         </nav>
@@ -47,17 +47,17 @@
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <?php
-					echo ('
+                    echo ('
 							<div class="info" style="margin:auto;">
 								<a href="#" class="d-block style="color:#000000;">
 									Xin chào 
 						'
-						. $_SESSION["user"] .
-						' </a>
+                        . $_SESSION["user"] .
+                        ' </a>
 							</div>
 						');
 
-					?>
+                    ?>
 
                 </div>
 
@@ -67,8 +67,8 @@
                         data-accordion="false">
                         <!--Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                         <?php
-						if ($_SESSION['role'] == 0) {
-							echo '
+                        if ($_SESSION['role'] == 0) {
+                            echo '
 									<li class="nav-item">
 										<a class="nav-link" href="index.php?page=admin&controller=admin&action=index">
 											<i class="nav-icon fas fa-user-graduate"> </i>
@@ -76,19 +76,19 @@
 										</a>
 									</li>
 								';
-						}
+                        }
 
-						?>
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?page=admin&controller=user&action=index">
+                                <i class="nav-icon fas fa-users-cog"></i>
+                                <p>Quản lý học viên</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
                                 <i class="nav-icon fas fa-comments"></i>
                                 <p>Bình luận đánh giá</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?page=admin&controller=user&action=index">
-                                <i class="nav-icon fas fa-users-cog"></i>
-                                <p>Liên hệ khách hàng</p>
                             </a>
                         </li>
                         <li class="nav-item">

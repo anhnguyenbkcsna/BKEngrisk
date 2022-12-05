@@ -1,10 +1,10 @@
 # BKEngrisk
 Database's assignment
 
-# Front-end
-cd ./front-end
-npm install --save
+role:
+0: main admin 
+1: manager
+2: teacher/ ta
+3: guest
 
-# Back-end
-cd ./back-end
-npm install --save
+admin@gmail.com admin

@@ -12,9 +12,9 @@ class LoginController extends BaseController
 	public function index()
 	{
 		session_start();
-		if (isset($_SESSION["guest"])) {
+		if (isset($_SESSION["user"])) {
 			session_start();
-			unset($_SESSION["guest"]);
+			unset($_SESSION["user"]);
 			session_destroy();
 			header("Location: index.php?page=main&controller=login&action=index");
 		} else if (isset($_POST['submit-btn'])) {
@@ -24,7 +24,6 @@ class LoginController extends BaseController
 			$check = User::validation($username, $password);
 			if ($check == 1) {
 				$role = User::getRole($username);
-
 				if (!isset($_SESSION["role"]))
 					$_SESSION["role"] = $role;
 				if (!isset($_SESSION["user"]))

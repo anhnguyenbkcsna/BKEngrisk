@@ -32,7 +32,7 @@ class RegisterController extends BaseController
 	public function editInfo()
 	{
 		session_start();
-		$email = $_SESSION['guest'];
+		$email = $_SESSION['user'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
 		$gender = $_POST['gender'];

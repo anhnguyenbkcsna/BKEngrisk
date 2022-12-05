@@ -45,11 +45,14 @@
             </a>
             <!-- Sidebar-->
             <div class="sidebar">
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="user-panel d-flex">
                     <?php
                     echo ('
+                    <img src=' . $user->profile_photo . ' class="rounded-circle" style="width: 50px; margin: 20px 0px 20px 30px;"alt="Avatar">
 							<div class="info" style="margin:auto;">
-								<a href="#" class="d-block style="color:#000000;">
+                           
+								
+                           <a href="#" class="d-block style="color:#000000;">
 									Xin chào 
 						'
                         . $_SESSION["user"] .

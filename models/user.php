@@ -62,7 +62,7 @@ class User
         $db = DB::getInstance();
         $req = $db->query(
             "
-            SELECT email, profile_photo, fname, lname, gender, yob, phone, createAt, updateAt, role
+            SELECT email, profile_photo, fname, lname, gender, yob, phone, address, createAt, updateAt, role
             FROM user
             WHERE email = '$email'
             ;"
@@ -119,7 +119,7 @@ class User
         $req = $db->query(
             "
             UPDATE user
-            SET profile_photo = '$profile_photo', fname = '$fname', lname = '$lname', gender = $gender, yob = $yob, phone = '$phone', address = '$address', updateAt = NOW()
+            SET profile_photo = '$profile_photo', fname = '$fname', lname = '$lname', gender = $gender, yob = $yob, phone = $phone, address = '$address', updateAt = NOW()
             WHERE email = '$email'
             ;"
         );

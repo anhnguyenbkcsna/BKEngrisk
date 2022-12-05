@@ -2,7 +2,12 @@
 session_start();
 if (!isset($_SESSION["role"]))
     header("Location: index.php?page=main&controller=login&action=index");
-else if ($_SESSION["role"] == 3)
+if (isset($_SESSION['user'])) {
+    require_once('models/user.php');
+    $user = User::get($_SESSION['user']);
+}
+
+if ($_SESSION["role"] == 3)
     header("Location: index.php?page=main&controller=layouts&action=index");
 
 ?>

@@ -95,7 +95,7 @@ class User
         return $user;
     }
 
-    static function insert($username, $password, $fname, $lname, $gender, $email, $yob, $phone, $address, $profile_photo = "public/img/user/default.png", $role = 3)
+    static function insert($username, $password, $fname, $lname, $gender, $email, $yob, $phone, $address, $profile_photo, $role = 3)
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
         $db = DB::getInstance();
@@ -121,7 +121,7 @@ class User
         $req = $db->query(
             "
             UPDATE taikhoan
-            SET profile_photo = '$profile_photo', fname = '$fname', lname = '$lname', gender = $gender, yob = $yob, email = '$email', phone = $phone, '$address', updateAt = NOW()
+            SET profile_photo = '$profile_photo', Ho = '$fname', Ten = '$lname', Gioitinh = '$gender', Namsinh = '$yob', Email = '$email', Sodienthoai = '$phone', Diachi = '$address', updateAt = NOW()
             WHERE TenDangNhap = '$username'
             ;"
         );

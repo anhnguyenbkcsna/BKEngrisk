@@ -188,9 +188,9 @@ require_once('views/admin/content_layouts.php');
                                             echo "<td>" . $user->address . "</td>";
                                             echo "<td>" . $user->phone . "</td>";
                                             echo "<td>
-											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-un='$user->username' data-email='$user->email' data-fname='$user->fname' data-lname='$user->lname' data-gender='$user->gender' data-age='$user->yob' data-phone='$user->phone' data-img='$user->profile_photo'> <i class='fas fa-edit'></i></btn>
-											<btn class='btn-changepass btn btn-warning btn-xs' style='margin-right: 5px' data-email='$user->username'> <i class='fas fa-lock'></i></btn>
-											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-email='$user->username' data-img='$user->profile_photo'> <i class='fas fa-trash'></i></btn>
+											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px;' data-acc='$user->username' data-email='$user->email' data-fname='$user->fname' data-lname='$user->lname' data-gender='$user->gender' data-yob='$user->yob' data-phone='$user->phone' data-img='$user->profile_photo' data-add='$user->address'> <i class='fas fa-edit'></i></btn>
+											<btn class='btn-changepass btn btn-warning btn-xs' style='margin-right: 5px;' data-email='$user->username'> <i class='fas fa-lock'></i></btn>
+											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px;' data-email='$user->username' data-img='$user->profile_photo'> <i class='fas fa-trash'></i></btn>
 											</td>";
                                             echo "</tr>";
                                         }
@@ -214,7 +214,7 @@ require_once('views/admin/content_layouts.php');
                                                 <div class="form-group">
                                                     <label>Username</label>
                                                     <input class="form-control" type="text" placeholder="Username"
-                                                        name='username' readonly />
+                                                        name='acc' readonly />
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -315,7 +315,7 @@ require_once('views/admin/content_layouts.php');
                                                 <input type="hidden" name="id" />
                                                 <div class="form-group">
                                                     <label>Tên đăng nhập</label>
-                                                    <input class="form-control" type="text" name="name" readonly />
+                                                    <input class="form-control" type="text" name="email" readonly />
                                                 </div>
 
                                                 <div class="form-group">

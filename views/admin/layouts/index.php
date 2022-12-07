@@ -63,12 +63,12 @@ require_once('views/admin/content_layouts.php'); ?>
                             }
                             ?>
 
-                            <li>
+                            <!-- <li>
                                 <a href="index.php?page=admin&controller=comments&action=index">
                                     <i class="fas fa-comments"></i>
                                     Bình luận - Đánh giá
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="index.php?page=admin&controller=users&action=index">
                                     <i class="fas fa-users-cog"></i>
@@ -80,7 +80,7 @@ require_once('views/admin/content_layouts.php'); ?>
                     <!-- /.col -->
                     <div class="col-sm-6 invoice-col">
                         <ul style="list-style: none;">
-                            <li>
+                            <!-- <li>
                                 <a href="index.php?page=admin&controller=admin&action=index">
                                     <i class="fas fa-cube"></i>
                                     Quản lý Sản phẩm
@@ -92,7 +92,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                     <i class="fas fa-file"></i>
                                     Quản lý tin tức
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="index.php?page=admin&controller=user&action=index">
                                     <i class="fas fa-newspaper"></i>

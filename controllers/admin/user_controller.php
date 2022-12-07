@@ -61,7 +61,7 @@ class UserController extends BaseController
 
 	public function editInfo()
 	{
-		$username = $_POST['username'];
+		$username = $_POST['acc'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
 		$yob = $_POST['yob'];

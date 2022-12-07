@@ -16,8 +16,6 @@ $(".btn-edit").click(function (e) {
     $('#EditAdminModal').modal('show');
 });
 
-
-
 $(".btn-delete").click(function (e) {
     var username = $(this).data("username");
     //console.log(username);

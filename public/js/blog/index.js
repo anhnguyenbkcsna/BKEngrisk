@@ -2,7 +2,6 @@ $(".btn-reply")
 .click(function (e)
 {
     var user = $(this).data("user");
-
     var news;
     if ($(this).data("news") == '')
     {
@@ -34,7 +33,7 @@ $(".btn-reply")
             }
             else 
             {
-                alert('Cannot insert! Please try again or log in.');
+                alert('Cannot insert');
             }
     }});
 });
@@ -43,7 +42,6 @@ $(".btn-comment")
 .click(function (e)
 {
     var user = $(this).data("user");
-    
     var news;
     if ($(this).data("news") == '')
     {
@@ -74,7 +72,7 @@ $(".btn-comment")
             }
             else 
             {
-                alert('Cannot insert! Please try again or log in.');
+                alert('Cannot insert');
             }
     }});
 });

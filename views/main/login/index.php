@@ -48,7 +48,7 @@
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                         <input class="input100" type="text" name="username">
                         <span class="focus-input100"></span>
-                        <span class="label-input100">Email</span>
+                        <span class="label-input100">Username</span>
                     </div>
 
 
@@ -59,11 +59,11 @@
                     </div>
                     <?php
 
-					if (isset($err)) {
-						echo '<p class="login-box-msg" style="color: red">' . $err . '</p>';
-						unset($err);
-					}
-					?>
+                    if (isset($err)) {
+                        echo '<p class="login-box-msg" style="color: red">' . $err . '</p>';
+                        unset($err);
+                    }
+                    ?>
                     <div class="flex-sb-m w-full p-t-3 p-b-32">
                         <div>
                             <a href="index.php?page=main&controller=register&action=index" class="txt1"

@@ -1,56 +1,56 @@
 <?php
-  session_start();
-  if (isset($_SESSION['guest']))
-  {
-    require_once('models/user.php');
-    $data = User::get($_SESSION['guest']);
-  }
-  
+session_start();
+if (isset($_SESSION['guest'])) {
+  require_once('models/user.php');
+  $data = User::get($_SESSION['guest']);
+}
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>KMS Technology - Bright Minds, Brilliant Solutions</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>KMS Technology - Bright Minds, Brilliant Solutions</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="https://kms-technology.com/wp-content/uploads/2018/10/favicon.png" rel="icon">
-  <link href="public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="https://kms-technology.com/wp-content/uploads/2018/10/favicon.png" rel="icon">
+    <link href="public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="public/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="public/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="public/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="public/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="public/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="public/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="public/css/index.css" rel="stylesheet">
-  <link href="public/css/style.css" rel="stylesheet">
-  <link href="public/css/style1.css" rel="stylesheet">
-  <link href="public/assets/css/style.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="public/css/index.css" rel="stylesheet">
+    <link href="public/css/style.css" rel="stylesheet">
+    <link href="public/css/style1.css" rel="stylesheet">
+    <link href="public/assets/css/style.css" rel="stylesheet">
 
 
 </head>
 
 <body>
 
-<?php
-  if (isset($_SESSION['guest']))
-  {
-  echo '
+    <?php
+  if (isset($_SESSION['guest'])) {
+    echo '
     <div class="modal fade" id="EditUserModal" tabindex="-1" role="dialog" aria-labelledby="EditUserModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -91,13 +91,13 @@
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '1')?'checked':"") . ' value="1" />
+                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '1') ? 'checked' : "") . ' value="1" />
                         <label>Nam</label>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '0')?'checked':"") . ' value="0" />
+                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '0') ? 'checked' : "") . ' value="0" />
                         <label>Nữ</label>
                       </div>
                     </div>
@@ -131,44 +131,50 @@
   }
   ?>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
-      <div class="logo">
-        <h1 class="logo me-auto"><a href="index.php?page=main&controller=layouts&action=index">
-        <img src="https://kms-technology.com/wp-content/uploads/2018/10/favicon.png" class="img-fluid" alt=""> KMS<span style="color: #00BFFF;"> TECHNOLOGY</span></a></h1>
-      </div>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <h1 class="logo me-auto"><a href="index.php?page=main&controller=layouts&action=index">
+                        <img src="https://kms-technology.com/wp-content/uploads/2018/10/favicon.png" class="img-fluid"
+                            alt=""> KMS<span style="color: #00BFFF;"> TECHNOLOGY</span></a></h1>
+            </div>
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto" href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li>
-          <li><a class="nav-link scrollto" href="index.php?page=main&controller=about&action=index">Giới thiệu</a></li>
-          <li><a class="nav-link scrollto" href="index.php?page=main&controller=services&action=index">Dịch vụ</a></li>
-          <li><a class="nav-link scrollto" href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
-          <li><a class="nav-link scrollto" href="index.php?page=main&controller=archive&action=index">Thành tựu</a></li>
-          <li><a class="nav-link scrollto" href="index.php?page=main&controller=contact&action=index">Kết nối</a></li>
-          <?php
-          if (!isset($_SESSION["guest"])){
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="index.php?page=main&controller=layouts&action=index">Trang
+                            chủ</a></li>
+                    <li><a class="nav-link scrollto" href="index.php?page=main&controller=about&action=index">Giới
+                            thiệu</a></li>
+                    <li><a class="nav-link scrollto" href="index.php?page=main&controller=services&action=index">Dịch
+                            vụ</a></li>
+                    <li><a class="nav-link scrollto" href="index.php?page=main&controller=blog&action=index">Tin tức</a>
+                    </li>
+                    <li><a class="nav-link scrollto" href="index.php?page=main&controller=archive&action=index">Thành
+                            tựu</a></li>
+                    <li><a class="nav-link scrollto" href="index.php?page=main&controller=contact&action=index">Kết
+                            nối</a></li>
+                    <?php
+          if (!isset($_SESSION["guest"])) {
             echo '
               <li><a href="index.php?page=main&controller=login&action=index" class="box-arrow-in-right"><i class="bu bi-file-lock-fill"></i></a></li> <!-- Đăng nhập -->
               <li><a href="index.php?page=main&controller=register&action=index" class="box-arrow-in-right"><i class="bu bi-person-lines-fill"></i></a></li> <!-- Đăng ký -->
             ';
-          }
-          else{
+          } else {
             echo '
             <li><a href="" data-toggle="modal" data-target="#EditUserModal"><i class="bu bi-person-badge-fill"></i></a></li>
             <li><a href="index.php?page=main&controller=login&action=logout" class="box-arrow-in-right"><i class="bu bi-box-arrow-right"></i></a></li> <!-- Đăng xuất -->
             ';
           }
           ?>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
 
-    </div>
-  </header><!-- End Header -->
+        </div>
+    </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  
+    <!-- ======= Hero Section ======= -->
+
 
 </html>

@@ -16,17 +16,17 @@ class RegisterController extends BaseController
 
 	public function submit()
 	{
-		$email = $_POST['email'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
 		$gender = $_POST['gender'];
+		$email = $_POST['email'];
 		$yob = $_POST['yob'];
-		$phone = $_POST['phone'];
 		$address = $_POST['address'];
-		$gender = $_POST['gender'];
+		$phone = $_POST['phone'];
+		$username = $_POST['username'];
 		$password = $_POST['pass'];
-		echo $fname . $lname . $yob . $gender . $phone . $email . $address . $password;
-		User::insert($email, 'public/img/user/default.png', $fname, $lname, $gender, $yob, $phone, $address, $password);
+		echo $fname . $lname . $yob . $gender . $phone . $email . $address . $username . $password;
+		User::insert($username, $password, $fname, $lname, $gender, $email, $yob, $phone, $address, 'public/img/user/default.png');
 		header('Location: index.php?page=main&controller=login&action=index');
 	}
 

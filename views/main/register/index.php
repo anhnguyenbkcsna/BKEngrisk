@@ -43,11 +43,10 @@
                         <strong>ĐĂNG KÝ</strong>
                     </span>
 
-
-                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email">
+                    <div class="wrap-input100 validate-input" data-validate="username is required">
+                        <input class="input100" type="text" name="username">
                         <span class="focus-input100"></span>
-                        <span class="label-input100">Email</span>
+                        <span class="label-input100">Username</span>
                     </div>
 
 
@@ -67,6 +66,12 @@
                         <input class="input100" type="text" name="lname">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Tên</span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="email">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Email</span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Year is required">

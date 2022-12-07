@@ -27,11 +27,11 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg"> Đăng nhập vào hệ thống </p>
                 <?php
-				if (isset($err)) {
-					echo '<p class="login-box-msg" style="color: red">' . $err . '</p>';
-					unset($err);
-				}
-				?>
+                if (isset($err)) {
+                    echo '<p class="login-box-msg" style="color: red">' . $err . '</p>';
+                    unset($err);
+                }
+                ?>
                 <form action="index.php?page=admin&controller=login&action=check" method="post">
                     <div class="input-group mb-3">
                         <input class="form-control" type="text" placeholder="Tài khoản" name="username">
@@ -54,8 +54,8 @@
                         <!-- /.col-->
                     </div>
                 </form>
-                <button href="index.php?page=main&controller=layouts&action=index" class="btn btn-primary btn-block">
-                    Back to home </button>
+                <a href="index.php?page=main&controller=login&action=index" class="btn btn-primary btn-block">
+                    Back to students login</a>
             </div>
             <!-- /.login-card-body-->
             <!-- /.login-box-->

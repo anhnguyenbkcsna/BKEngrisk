@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (isset($_SESSION['guest'])) {
+if (isset($_SESSION['user'])) {
   require_once('models/user.php');
-  $data = User::get($_SESSION['guest']);
+  $data = User::get($_SESSION['user']);
 }
 
 ?>
@@ -49,7 +49,7 @@ if (isset($_SESSION['guest'])) {
 <body>
 
     <?php
-  if (isset($_SESSION['guest'])) {
+  if (isset($_SESSION['user'])) {
     echo '
     <div class="modal fade" id="EditUserModal" tabindex="-1" role="dialog" aria-labelledby="EditUserModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -81,8 +81,8 @@ if (isset($_SESSION['guest'])) {
             <div class="row" style="margin-top: 5%;">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Tuổi</label>
-                  <input class="form-control" type="number" placeholder="Tuổi" name="age" value="' . $data->age . '"/>
+                  <label>Năm sinh</label>
+                  <input class="form-control" type="number" placeholder="Năm sinh" name="yob" value="' . $data->yob . '"/>
                 </div>
               </div>
               <div class="col-md-6">
@@ -109,6 +109,10 @@ if (isset($_SESSION['guest'])) {
             <div class="form-group" style="margin-top: 5%;">
               <label>Số điện thoại</label>
               <input class="form-control" type="number" placeholder="Số điện thoại" name="phone" value="' . $data->phone . '"/>
+            </div>
+            <div class="form-group" style="margin-top: 5%;">
+              <label>Địa chỉ</label>
+              <input class="form-control" type="address" placeholder="Địa chỉ" name="address" value="' . $data->address . '"/>
             </div>
             <div class="form-group" style="margin-top: 5%;">
               <label>Hình ảnh hiện tại </label>
@@ -155,14 +159,17 @@ if (isset($_SESSION['guest'])) {
                     <li><a class="nav-link scrollto" href="index.php?page=main&controller=contact&action=index">Kết
                             nối</a></li>
                     <?php
-          if (!isset($_SESSION["guest"])) {
+          if (!isset($_SESSION["user"])) {
             echo '
               <li><a href="index.php?page=main&controller=login&action=index" class="box-arrow-in-right"><i class="bu bi-file-lock-fill"></i></a></li> <!-- Đăng nhập -->
               <li><a href="index.php?page=main&controller=register&action=index" class="box-arrow-in-right"><i class="bu bi-person-lines-fill"></i></a></li> <!-- Đăng ký -->
             ';
           } else {
+            // 
             echo '
-            <li><a href="" data-toggle="modal" data-target="#EditUserModal"><i class="bu bi-person-badge-fill"></i></a></li>
+            
+            <img src=' . $data->profile_photo . ' class="rounded-circle" style="width: 40px;"alt="Avatar">
+            <li> <a href="" data-toggle="modal" data-target="#EditUserModal"><i class="bu bi-person-badge-fill"></i></a></li>
             <li><a href="index.php?page=main&controller=login&action=logout" class="box-arrow-in-right"><i class="bu bi-box-arrow-right"></i></a></li> <!-- Đăng xuất -->
             ';
           }

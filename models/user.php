@@ -127,7 +127,13 @@ class User
     //     );
     //     return $req;
     // }
-
+    static function getRole($username)
+    {
+        $db = DB::getInstance();
+        $req = $db->query("SELECT role FROM taikhoan WHERE TenDangNhap = '$username'");
+        $result = $req->fetch_assoc();
+        return $result['role'];
+    }
     static function validation($username, $password)
     {
         $db = DB::getInstance();

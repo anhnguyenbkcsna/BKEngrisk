@@ -86,10 +86,6 @@
                             Đăng nhập
                         </button>
                     </div>
-                    <a href="index.php?page=main&controller=layouts&action=index" class="btn btn-primary btn-block">
-                        Back to home </a>
-                    <a href="index.php?page=admin&controller=login&action=index" class="btn btn-primary btn-block">
-                        Go to admin login </a>
                 </form>
 
                 <div class="login100-more"

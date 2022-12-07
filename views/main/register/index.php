@@ -70,13 +70,13 @@
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Year is required">
-                        <input class="input100" type="text" name="yob">
+                        <input class="input100" type="number" name="yob">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Năm sinh</span>
                     </div>
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="phone">
+                        <input class="input100" type="number" name="phone">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Số điện thoại</span>
                     </div>

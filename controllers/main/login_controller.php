@@ -12,34 +12,33 @@ class LoginController extends BaseController
 	public function index()
 	{
 		session_start();
-		if (isset($_SESSION["user"])) {
+		if (isset($_SESSION["guest"]))
+		{
 			session_start();
-			unset($_SESSION["user"]);
+			unset($_SESSION["guest"]);
 			session_destroy();
 			header("Location: index.php?page=main&controller=login&action=index");
-		} else if (isset($_POST['submit-btn'])) {
+		}
+		else if (isset($_POST['submit-btn']))
+		{
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			unset($_POST);
 			$check = User::validation($username, $password);
-			if ($check == 1) {
-				$role = User::getRole($username);
-				if (!isset($_SESSION["role"]))
-					$_SESSION["role"] = $role;
-				if (!isset($_SESSION["user"]))
-					$_SESSION["user"] = $username;
-
-				if ($role == 3) { //student-guest
-					header('Location: index.php?page=main&controller=layouts&action=index');
-				} else
-					header("Location: index.php?page=admin&controller=layouts&action=index");
-			} else {
+			if ($check == 1)
+			{
+				$_SESSION["guest"] = $username;
+				header('Location: index.php?page=main&controller=layouts&action=index');
+			}
+			else 
+			{
 				$err = "Sai tài khoản hoặc mật khẩu";
 				$data = array('err' => $err);
 				$this->render('index', $data);
-				session_destroy();
 			}
-		} else {
+		}
+		else
+		{
 			$this->render('index');
 		}
 	}
@@ -49,6 +48,6 @@ class LoginController extends BaseController
 		session_start();
 		unset($_SESSION["guest"]);
 		session_destroy();
-		header("Location: index.php?page=main&controller=layouts&action=index");
+		header("Location: index.php?page=main&controller=login&action=index");
 	}
 }

@@ -2,16 +2,16 @@
 $pages = array(
   'error' => ['errors'],
   'main' => ['layouts', 'about', 'services', 'blog', 'archive', 'contact', 'login', 'register'],
-  'admin' => ['layou  ts', 'members', 'products', 'news', 'comments']
+  'admin' => ['layouts', 'members', 'products', 'news', 'comments']
 );
 $controllers = array(
   //Admin controller
   'errors' => ['index'],
   'layouts' => ['index'], // Bổ sung thêm các hàm trong controllers
   'members' => ['index'],
-  'products' => ['index', 'add', 'edit', 'delete'],
-  'news' => ['index', 'add', 'edit', 'delete', 'hide'],
-  'comments' => ['index', 'hide', 'add', 'edit', 'delete'],
+  'products' => ['index','add','edit','delete'],
+  'news' => ['index','add','edit','delete','hide'],
+  'comments' => ['index','hide','add','edit','delete'],
   'admin' => ['index', 'add', 'edit', 'delete'],
   'user' => ['index', 'add', 'editInfo', 'editPass', 'delete'],
   'company' => ['index', 'add', 'edit', 'delete'],
@@ -35,13 +35,13 @@ if (!array_key_exists($page, $pages) || !array_key_exists($controller, $controll
   $controller = 'errors';
   $action = 'index';
 }
-if ($page == 'error') {
+if($page=='error'){
   $controller = 'errors';
   $action = 'index';
 }
 
 // Nhúng file định nghĩa controller vào để có thể dùng được class định nghĩa trong file đó
-include_once('controllers/' . $page . "/" . $controller . '_controller.php');
+include_once('controllers/' .$page ."/" . $controller . '_controller.php');
 // Tạo ra tên controller class từ các giá trị lấy được từ URL sau đó gọi ra để hiển thị trả về cho người dùng.
 $klass = str_replace('_', '', ucwords($controller, '_')) . 'Controller';
 $controller = new $klass;

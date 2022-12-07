@@ -1,9 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION["role"]))
-    header("Location: index.php?page=main&controller=login&action=index");
-else if ($_SESSION["role"] == 3)
-    header("Location: index.php?page=main&controller=layouts&action=index");
+if (!isset($_SESSION["user"])) {
+    header("Location: index.php?page=admin&controller=login&action=index");
+}
 ?>
 <?php
 require_once('views/admin/header.php'); ?>
@@ -42,14 +41,13 @@ require_once('views/admin/content_layouts.php'); ?>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <table id="giaotrinhofkh" class="table table-bordered table-striped"
-                                        style="margin-top:6px;">
+                                    <table id="giaotrinhofkh" class="table table-bordered table-striped" style="margin-top:6px;">
                                         <thead>
                                             <tr class="text-center">
                                                 <th style="width: 220px;">STT</th>
                                                 <th style="width: 220px;">Bài viết</th>
                                                 <th style="width: 220px;">Thời gian</th>
-
+                                                
                                                 <th style="width: 260px;">Nội dung</th>
                                                 <th style="width: 230px;">Tác giả</th>
                                                 <th style="width: 130px;">Trạng thái</th>
@@ -78,7 +76,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                                     . $comment->news_title .
                                                     "</td>
                                                     <td >
-                                                       " .  date('h:i:sa - d/m/Y', strtotime($comment->date))  . "
+                                                       " .  date('h:i:sa - d/m/Y',strtotime($comment->date))  . "
                                                     </td>
                                                     
                                                     <td>
@@ -87,7 +85,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                                     <td>
                                                     " . $comment->user_id . "
                                                     <td >
-                                                      " . $status . "
+                                                      " . $status."
                                                     </td>   
                                                  </td>             
                                                     <td style=\"width:150px;\"> " .
@@ -99,82 +97,52 @@ require_once('views/admin/content_layouts.php'); ?>
                                             }
                                             ?>
                                         </tbody>
-                                        <div class="modal fade" id="HideStudentModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="HideStudentModal" aria-hidden="true">
+                                        <div class="modal fade" id="HideStudentModal" tabindex="-1" role="dialog" aria-labelledby="HideStudentModal" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content bg-danger">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Ẩn hay hiện bình luận</h5><button
-                                                            class="close" type="button" data-dismiss="modal"
-                                                            aria-label="Close"><span
-                                                                aria-hidden="true">&times;</span></button>
+                                                        <h5 class="modal-title">Ẩn hay hiện bình luận</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     </div>
-                                                    <form action="index.php?page=admin&controller=comments&action=hide"
-                                                        method="post">
+                                                    <form action="index.php?page=admin&controller=comments&action=hide" method="post">
                                                         <div class="modal-body"><input type="hidden" name="id" />
                                                             <p>Bạn có chắc chắn?</p>
                                                         </div>
-                                                        <div class="modal-footer"><button
-                                                                class="btn btn-danger btn-outline-light" type="button"
-                                                                data-dismiss="modal">Đóng</button><button
-                                                                class="btn btn-danger btn-outline-light"
-                                                                type="submit">Cập nhật</button></div>
+                                                        <div class="modal-footer"><button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-danger btn-outline-light" type="submit">Cập nhật</button></div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal fade" id="DeleteStudentModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="DeleteStudentModal" aria-hidden="true">
+                                        <div class="modal fade" id="DeleteStudentModal" tabindex="-1" role="dialog" aria-labelledby="DeleteStudentModal" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content bg-danger">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Xóa</h5><button class="close"
-                                                            type="button" data-dismiss="modal" aria-label="Close"><span
-                                                                aria-hidden="true">&times;</span></button>
+                                                        <h5 class="modal-title">Xóa</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     </div>
-                                                    <form
-                                                        action="index.php?page=admin&controller=comments&action=delete"
-                                                        method="post">
+                                                    <form action="index.php?page=admin&controller=comments&action=delete" method="post">
                                                         <div class="modal-body"><input type="hidden" name="id" />
                                                             <p>Bạn có chắc chắn muốn xóa bình luận?</p>
                                                         </div>
-                                                        <div class="modal-footer"><button
-                                                                class="btn btn-danger btn-outline-light" type="button"
-                                                                data-dismiss="modal">Đóng</button><button
-                                                                class="btn btn-danger btn-outline-light"
-                                                                type="submit">Xóa</button></div>
+                                                        <div class="modal-footer"><button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-danger btn-outline-light" type="submit">Xóa</button></div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal fade" id="EditStudentModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="EditStudentModal" aria-hidden="true">
+                                        <div class="modal fade" id="EditStudentModal" tabindex="-1" role="dialog" aria-labelledby="EditStudentModal" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Chỉnh sửa bình luận</h5><button
-                                                            class="close" type="button" data-dismiss="modal"
-                                                            aria-label="Close"><span
-                                                                aria-hidden="true">&times;</span></button>
+                                                        <h5 class="modal-title">Chỉnh sửa bình luận</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     </div>
-                                                    <form action="index.php?page=admin&controller=comments&action=edit"
-                                                        enctype="multipart/form-data" method="post">
+                                                    <form action="index.php?page=admin&controller=comments&action=edit" enctype="multipart/form-data" method="post">
                                                         <div class="modal-body">
                                                             <div class="row">
-                                                                <div class="col-12"><label>ID</label> <input
-                                                                        class="form-control" type="text"
-                                                                        placeholder="Name" name="id" readonly /></div>
+                                                                <div class="col-12"><label>ID</label> <input class="form-control" type="text" placeholder="Name" name="id" readonly /></div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-12"><label>Nội Dung </label><input
-                                                                        class="form-control" type="text" name="title" />
-                                                                </div>
+                                                                <div class="col-12"><label>Nội Dung </label><input class="form-control" type="text" name="title" /></div>
                                                             </div>
                                                         </div>
-                                                        <div class="modal-footer"><button class="btn btn-secondary"
-                                                                type="button" data-dismiss="modal">Đóng</button><button
-                                                                class="btn btn-primary" type="submit">Chỉnh sửa</button>
-                                                        </div>
+                                                        <div class="modal-footer"><button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-primary" type="submit">Chỉnh sửa</button></div>
                                                     </form>
                                                 </div>
                                             </div>

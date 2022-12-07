@@ -17,13 +17,14 @@ class RegisterController extends BaseController
 	public function submit()
 	{
 		$email = $_POST['email'];
-		$password = $_POST['pass'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
-		$yob = $_POST['yob'];
 		$gender = $_POST['gender'];
+		$yob = $_POST['yob'];
 		$phone = $_POST['phone'];
 		$address = $_POST['address'];
+		$gender = $_POST['gender'];
+		$password = $_POST['pass'];
 		echo $fname . $lname . $yob . $gender . $phone . $email . $address . $password;
 		User::insert($email, 'public/img/user/default.png', $fname, $lname, $gender, $yob, $phone, $address, $password);
 		header('Location: index.php?page=main&controller=login&action=index');
@@ -32,7 +33,7 @@ class RegisterController extends BaseController
 	public function editInfo()
 	{
 		session_start();
-		$email = $_SESSION['user'];
+		$email = $_SESSION['guest'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
 		$gender = $_POST['gender'];

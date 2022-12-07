@@ -20,13 +20,12 @@ class UserController extends BaseController
 	{
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
-		$yob = $_POST['yob'];
+		$age = $_POST['age'];
 		$gender = $_POST['gender'];
 		$phone = $_POST['phone'];
 		$email = $_POST['email'];
-		$address = $_POST['address'];
 		$password = $_POST['password'];
-		echo $fname . $lname . $yob . $gender . $phone . $email . $address . $password;
+		echo $fname . $lname . $age . $gender . $phone . $email . $password;
 		// Photo
 		$target_dir = "public/img/user/";
 		$path = $_FILES['fileToUpload']['name'];
@@ -54,7 +53,7 @@ class UserController extends BaseController
 		}
 		move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 		// Add new
-		$add_new = User::insert($email, $target_file, $fname, $lname, $gender, $yob, $phone, $address, $password);
+		$add_new = User::insert($email, $target_file, $fname, $lname, $gender, $age, $phone, $password);
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}
 
@@ -64,9 +63,8 @@ class UserController extends BaseController
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
 		$gender = $_POST['gender'];
-		$yob = $_POST['yob'];
+		$age = $_POST['age'];
 		$phone = $_POST['phone'];
-		$address = $_POST['address'];
 		$urlcurrent = $_POST['img'];
 		// Photo
 		$target_dir = "public/img/user/";
@@ -96,25 +94,25 @@ class UserController extends BaseController
 		unlink($file_pointer);
 		move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 		// Update
-		$change_info = User::update($email, $target_file, $fname, $lname, $gender, $yob, $phone, $address);
+		$change_info = User::update($email, $target_file, $fname, $lname, $gender, $age, $phone);
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}
 
 	public function editPass()
 	{
 		$email = $_POST['email'];
-		// $currentPassword = $_POST['current-password'];
-		// $check = User::validation($email, $currentPassword);
-		// if ($check == 1) {
-		// 	$newpassword = $_POST['new-password'];
-		// 	$change_pass = User::changePassword_($email, $newpassword);
-		// 	header('Location: index.php?page=admin&controller=user&action=index');
-		// } else {
-		// 	$this->render('wrong-pass');
-		// }
-		$newpassword = $_POST['new-password'];
-		$change_pass = User::changePassword_($email, $newpassword);
-		header('Location: index.php?page=admin&controller=user&action=index');
+		$currentPassword = $_POST['current-password'];
+		$check = User::validation($email, $currentPassword);
+		if($check==1)
+		{
+			$newpassword = $_POST['new-password'];
+			$change_pass = User::changePassword_($email, $newpassword);
+			header('Location: index.php?page=admin&controller=user&action=index');
+		}
+		else 
+		{
+			$this->render('wrong-pass');
+		}
 	}
 
 	public function delete()

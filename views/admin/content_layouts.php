@@ -75,7 +75,7 @@
 									<li class="nav-item">
 										<a class="nav-link" href="index.php?page=admin&controller=admin&action=index">
 											<i class="nav-icon fas fa-user-graduate"> </i>
-											<p>Danh sách nhân viên</p>
+											<p>Quản lý nhân viên</p>
 										</a>
 									</li>
 								';
@@ -88,7 +88,7 @@
                                 <p>Quản lý học viên</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
                                 <i class="nav-icon fas fa-comments"></i>
                                 <p>Bình luận đánh giá</p>
@@ -105,7 +105,7 @@
                                 <i class="nav-icon fa fa-file" aria-hidden="true"></i>
                                 <p>Quản lý tin tức</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?page=admin&controller=company&action=index">
                                 <i class="nav-icon fa fa-newspaper" aria-hidden="true"></i>

@@ -2,14 +2,14 @@
 session_start();
 
 if (!isset($_SESSION["role"]))
-	header("Location: index.php?page=main&controller=login&action=index");
+    header("Location: index.php?page=main&controller=login&action=index");
 if (isset($_SESSION['user'])) {
-	require_once('models/user.php');
-	$user = User::get($_SESSION['user']);
+    require_once('models/user.php');
+    $user = User::get($_SESSION['user']);
 }
 
 if ($_SESSION["role"] == 3)
-	header("Location: index.php?page=main&controller=layouts&action=index");
+    header("Location: index.php?page=main&controller=layouts&action=index");
 
 ?>
 <?php
@@ -50,8 +50,8 @@ require_once('views/admin/content_layouts.php'); ?>
                     <div class="col-sm-6 invoice-col">
                         <ul style="list-style: none;">
                             <?php
-							if ($_SESSION['role'] == 0) {
-								echo '
+                            if ($_SESSION['role'] == 0) {
+                                echo '
 									<li>
 										<a href="index.php?page=admin&controller=admin&action=index">
 											<i class="fas fa-user-graduate"></i>
@@ -60,8 +60,8 @@ require_once('views/admin/content_layouts.php'); ?>
 									</li>
 									
 									';
-							}
-							?>
+                            }
+                            ?>
 
                             <li>
                                 <a href="index.php?page=admin&controller=comments&action=index">
@@ -70,7 +70,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php?page=admin&controller=user&action=index">
+                                <a href="index.php?page=admin&controller=users&action=index">
                                     <i class="fas fa-users-cog"></i>
                                     Liên hệ khách hàng
                                 </a>

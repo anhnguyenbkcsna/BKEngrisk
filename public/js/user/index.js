@@ -13,32 +13,37 @@ $(function () {
 });
 
 $(".btn-edit").click(function (e) {
-	var email = $(this).data("email");
+	var username = $(this).data("username");
+	var email = $(this).attr("data-email");
 	var fname = $(this).data("fname");
 	var lname = $(this).data("lname");
 	var gender = $(this).data("gender");
-	var age = $(this).data("age");
+	var yob = $(this).attr("data-yob");
 	var phone = $(this).data("phone");
+	var address = $(this).data("address");
 	var img = $(this).data("img");
-	// console.log(email, fname, lname, gender, age, phone);
-	$("#EditUserModal input[name='email']").val(email);
+
+
+	$("#EditUserModal input[name='username']").val(username);
 	$("#EditUserModal input[name='fname']").val(fname);
 	$("#EditUserModal input[name='lname']").val(lname);
-	if (gender)
+	$("#EditUserModal input[name='yob']").val(yob);
+	if (gender == 'Nam')
 		$("#EditUserModal #Nam").prop(
 			"checked",
 			true
 		); //Search checked input radio jquery
 	else $("#EditUserModal #Nu").prop("checked", true);
-	$("#EditUserModal input[name='age']").val(age);
+	$("#EditUserModal input[name='email']").val(email);
 	$("#EditUserModal input[name='phone']").val(phone);
+	$("#EditUserModal input[name='address']").val(address);
 	$("#EditUserModal input[name='img']").val(img);
 	$("#EditUserModal").modal("show");
 });
 
 $(".btn-changepass").click(function (e) {
-	var email = $(this).data("email");
-	$("#EditPassModal input[name='email']").val(email);
+	var username = $(this).data("username");
+	$("#EditPassModal input[name='username']").val(username);
 	$("#EditPassModal").modal("show");
 });
 
@@ -47,5 +52,5 @@ $(".btn-delete").click(function (e) {
 	var img = $(this).data("img");
 	$("#DeleteUserModal input[name='email']").val(email);
 	$("#DeleteUserModal input[name='img']").val(img);
-	$("#DeleteUserModal").modal("show");
-});
+	$('#DeleteUserModal').modal('show');
+})

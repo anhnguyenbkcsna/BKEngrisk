@@ -18,14 +18,16 @@ class UserController extends BaseController
 
 	public function add()
 	{
+		$username = $_POST['username'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
-		$age = $_POST['age'];
+		$yob = $_POST['yob'];
 		$gender = $_POST['gender'];
 		$phone = $_POST['phone'];
 		$email = $_POST['email'];
+		$address = $_POST['address'];
 		$password = $_POST['password'];
-		echo $fname . $lname . $age . $gender . $phone . $email . $password;
+		echo $fname . $lname . $yob . $gender . $phone . $email . $address . $password;
 		// Photo
 		$target_dir = "public/img/user/";
 		$path = $_FILES['fileToUpload']['name'];
@@ -53,18 +55,20 @@ class UserController extends BaseController
 		}
 		move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 		// Add new
-		$add_new = User::insert($email, $target_file, $fname, $lname, $gender, $age, $phone, $password);
+		$add_new = User::insert($username, $password, $fname, $lname, $gender, $email, $yob, $phone, $address, $fileuploadname);
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}
 
 	public function editInfo()
 	{
-		$email = $_POST['email'];
+		$username = $_POST['username'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
+		$yob = $_POST['yob'];
 		$gender = $_POST['gender'];
-		$age = $_POST['age'];
+		$email = $_POST['email'];
 		$phone = $_POST['phone'];
+		$address = $_POST['address'];
 		$urlcurrent = $_POST['img'];
 		// Photo
 		$target_dir = "public/img/user/";
@@ -94,33 +98,34 @@ class UserController extends BaseController
 		unlink($file_pointer);
 		move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 		// Update
-		$change_info = User::update($email, $target_file, $fname, $lname, $gender, $age, $phone);
+		echo $username . $target_file . $fname . $lname . $gender . $yob . $email . $phone . $address;
+		$change_info = User::update($username, $target_file, $fname, $lname, $gender, $yob, $email, $phone, $address);
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}
 
 	public function editPass()
 	{
-		$email = $_POST['email'];
-		$currentPassword = $_POST['current-password'];
-		$check = User::validation($email, $currentPassword);
-		if($check==1)
-		{
-			$newpassword = $_POST['new-password'];
-			$change_pass = User::changePassword_($email, $newpassword);
-			header('Location: index.php?page=admin&controller=user&action=index');
-		}
-		else 
-		{
-			$this->render('wrong-pass');
-		}
+		$username = $_POST['username'];
+		// $currentPassword = $_POST['current-password'];
+		// $check = User::validation($email, $currentPassword);
+		// if ($check == 1) {
+		// 	$newpassword = $_POST['new-password'];
+		// 	$change_pass = User::changePassword_($email, $newpassword);
+		// 	header('Location: index.php?page=admin&controller=user&action=index');
+		// } else {
+		// 	$this->render('wrong-pass');
+		// }
+		$newpassword = $_POST['new-password'];
+		$change_pass = User::changePassword_($username, $newpassword);
+		header('Location: index.php?page=admin&controller=user&action=index');
 	}
 
 	public function delete()
 	{
-		$email = $_POST['email'];
+		$username = $_POST['email'];
 		$urlcurrent = $_POST['img'];
 		unlink($urlcurrent);
-		$delete_user = User::delete($email);
+		$delete_user = User::delete($username);
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}
 }

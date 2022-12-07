@@ -84,7 +84,7 @@
                         ?>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?page=admin&controller=user&action=index">
-                                <i class="nav-icon fas fa-users-cog"></i>
+                                <i class="nav-icon fas fa-user-cog"></i>
                                 <p>Quản lý học viên</p>
                             </a>
                         </li>

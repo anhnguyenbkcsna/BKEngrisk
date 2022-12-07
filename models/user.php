@@ -17,7 +17,7 @@ class User
     public $updateAt;
     public $profile_photo;
 
-    public function __construct($ID, $fname, $lname, $gender, $email, $yob, $address, $phone, $username, $role, $password, $createAt, $updateAt, $profile_photo)
+    public function __construct($ID, $fname, $lname, $gender, $email, $yob, $address, $phone, $username, $role, $password, $createAt = null, $updateAt = null, $profile_photo = null)
     {
         $this->ID = $ID;
         $this->fname = $fname;
@@ -46,14 +46,14 @@ class User
         foreach ($req->fetch_all(MYSQLI_ASSOC) as $user) {
             $users[] = new User(
                 $user['ID'],
-                $user['fname'],
-                $user['lname'],
-                $user['gender'],
-                $user['email'],
-                $user['yob'],
-                $user['address'],
-                $user['phone'],
-                $user['username'],
+                $user['Ho'],
+                $user['Ten'],
+                $user['Gioitinh'],
+                $user['Email'],
+                $user['Namsinh'],
+                $user['Diachi'],
+                $user['Sodienthoai'],
+                $user['TenDangNhap'],
                 $user['role'],
                 '', // Do not return password
                 $user['createAt'],
@@ -69,7 +69,7 @@ class User
         $db = DB::getInstance();
         $req = $db->query(
             "
-            SELECT ID, Ho, Ten, Gioitinh, Email, Namsinh, SoDienThoai, Diachi, TenDangNhap, role, MatKhau, createAt, updateAt, profile_photo
+            SELECT ID, Ho, Ten, Gioitinh, Email, Namsinh, Diachi, Sodienthoai, TenDangNhap, role, MatKhau, createAt, updateAt, profile_photo
             FROM taikhoan
             WHERE TenDangNhap = '$username'
             ;"
@@ -82,8 +82,8 @@ class User
             $result['Gioitinh'],
             $result['Email'],
             $result['Namsinh'],
-            $result['SoDienThoai'],
             $result['Diachi'],
+            $result['Sodienthoai'],
             $result['TenDangNhap'],
             $result['role'],
             '', // Do not return password
@@ -95,7 +95,7 @@ class User
         return $user;
     }
 
-    static function insert($username, $password, $fname, $lname, $gender, $email, $yob, $phone, $address, $profile_photo, $role = 3)
+    static function insert($username, $password, $fname, $lname, $gender, $email, $yob, $phone, $address, $profile_photo = "public/img/user/default.png", $role = 3)
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
         $db = DB::getInstance();
@@ -108,25 +108,25 @@ class User
         return $req;
     }
 
-    // static function delete($email)
-    // {
-    //     $db = DB::getInstance();
-    //     $req = $db->query("DELETE FROM taikhoan WHERE email = '$email';");
-    //     return $req;
-    // }
+    static function delete($username)
+    {
+        $db = DB::getInstance();
+        $req = $db->query("DELETE FROM taikhoan WHERE TenDangNhap = '$username';");
+        return $req;
+    }
 
-    // static function update($email, $profile_photo, $fname, $lname, $gender, $yob, $phone, $address)
-    // {
-    //     $db = DB::getInstance();
-    //     $req = $db->query(
-    //         "
-    //         UPDATE user
-    //         SET profile_photo = '$profile_photo', fname = '$fname', lname = '$lname', gender = $gender, yob = $yob, phone = $phone, '$address', updateAt = NOW()
-    //         WHERE email = '$email'
-    //         ;"
-    //     );
-    //     return $req;
-    // }
+    static function update($username, $profile_photo, $fname, $lname, $gender, $yob, $email, $phone, $address)
+    {
+        $db = DB::getInstance();
+        $req = $db->query(
+            "
+            UPDATE taikhoan
+            SET profile_photo = '$profile_photo', fname = '$fname', lname = '$lname', gender = $gender, yob = $yob, email = '$email', phone = $phone, '$address', updateAt = NOW()
+            WHERE TenDangNhap = '$username'
+            ;"
+        );
+        return $req;
+    }
     static function getRole($username)
     {
         $db = DB::getInstance();
@@ -160,15 +160,16 @@ class User
     //         }
     //     }
 
-    //     static function changePassword_($email, $newpassword)
-    //     {
-    //         $password = password_hash($newpassword, PASSWORD_DEFAULT);
-    //         $db = DB::getInstance();
-    //         $req = $db->query(
-    //             "UPDATE user
-    //             SET password = '$password', updateAt = NOW()
-    //             WHERE email = '$email';"
-    //         );
-    //         return $req;
-    //     }
+    static function changePassword_($username, $newpassword)
+    {
+        echo $username . $newpassword;
+        $password = password_hash($newpassword, PASSWORD_DEFAULT);
+        $db = DB::getInstance();
+        $req = $db->query(
+            "UPDATE taikhoan
+                SET MatKhau = '$password', updateAt = NOW()
+                WHERE TenDangNhap = '$username';"
+        );
+        return $req;
+    }
 }

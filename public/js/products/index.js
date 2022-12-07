@@ -70,18 +70,14 @@ $("#form-add-student").submit(function (e) {
 });
 
 
-// $(".btn-edit").click(function(e) {
-//   console.log("I'm here");
-// })
-
 $(".btn-edit").click(function (e) {
-  //console.log("I see youu")
   var id = $(this).data("id");
   var name = $(this).data("name");
   var price = $(this).data("price");
   var description = $(this).data("description");
   var content = $(this).data("content");
   var img = $(this).data("img");
+//   console.log(content);
   $("#EditStudentModal input[name='id']").val(id);
   $("#EditStudentModal input[name='name']").val(name);
   $("#EditStudentModal input[name='price']").val(price);

@@ -1,26 +1,26 @@
 <?php
   include_once('views/main/navbar.php');
 ?>
-  <!-- ======= Breadcrumbs ======= -->
-  <section id="breadcrumbs" class="breadcrumbs" style="background-color: #1E90FF;">
-    <div class="container">
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs" style="background-color: #1E90FF;">
+  <div class="container">
 
-      <div class="d-flex justify-content-between align-items-center">
-        <h1 style="color: white;"><strong>TIN TỨC</strong></h1>
-        
-        <ol>
-          <li><a style="color: white;" href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li>
-          <li><a style="color: white;" href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
-        </ol>
-      </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 style="color: white;"><strong>TIN TỨC</strong></h1>
 
+      <ol>
+        <li><a style="color: white;" href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li>
+        <li><a style="color: white;" href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
+      </ol>
     </div>
-  </section><!-- End Breadcrumbs -->
 
-  <main id="main">
-    <!-- Modal here -->
-    <!-- Modal 1-->
-    <?php
+  </div>
+</section>
+
+<main id="main">
+  <!-- Modal here -->
+  <!-- Modal 1-->
+  <?php
     foreach ($recent as $news)
     {
       echo '
@@ -258,15 +258,15 @@
     // }
     ?>
 
-    <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up">
+  <!-- ======= Blog Section ======= -->
+  <section id="blog" class="blog">
+    <div class="container" data-aos="fade-up">
 
-        <div class="row">
+      <div class="row">
 
-          <div class="col-lg-8 entries">
-            <!-- Entry -->
-            <?php
+        <div class="col-lg-8 entries">
+          <!-- Entry -->
+          <?php
 
               foreach ($newses as $news) {
                 echo '
@@ -298,19 +298,23 @@
                 ';
               }
             ?>
-            
-            <div style="margin-top: 20px; margin-left: 30%; position: relative;">
+
+          <div style="margin-top: 20px; margin-left: 30%; position: relative;">
             <nav aria-label="Page navigation example">
-              <ul class="pagination" >
+              <ul class="pagination">
                 <li class="page-item">
-                  <a class="page-link" href="index.php?page=main&controller=blog&action=index&pg=1" aria-label="Previous">
+                  <a class="page-link" href="index.php?page=main&controller=blog&action=index&pg=1"
+                    aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">Previous</span>
                   </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="index.php?page=main&controller=blog&action=index&pg=1">1</a></li>
-                <li class="page-item"><a class="page-link" href="index.php?page=main&controller=blog&action=index&pg=2">2</a></li>
-                <li class="page-item"><a class="page-link" href="index.php?page=main&controller=blog&action=index&pg=3">3</a></li>
+                <li class="page-item"><a class="page-link"
+                    href="index.php?page=main&controller=blog&action=index&pg=1">1</a></li>
+                <li class="page-item"><a class="page-link"
+                    href="index.php?page=main&controller=blog&action=index&pg=2">2</a></li>
+                <li class="page-item"><a class="page-link"
+                    href="index.php?page=main&controller=blog&action=index&pg=3">3</a></li>
                 <li class="page-item">
                   <a class="page-link" href="index.php?page=main&controller=blog&action=index&pg=2" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
@@ -319,15 +323,15 @@
                 </li>
               </ul>
             </nav>
-            </div>
-
           </div>
-          <div class="col-lg-4">
 
-            <div class="sidebar">
+        </div>
+        <div class="col-lg-4">
 
-              <h3 class="sidebar-title" style="color: #1E90FF;">Bài viết gần đây</h3>
-              <div class="sidebar-item recent-posts">
+          <div class="sidebar">
+
+            <h3 class="sidebar-title" style="color: #1E90FF;">Bài viết gần đây</h3>
+            <div class="sidebar-item recent-posts">
               <?php
                 foreach ($recent as $news)
                 {
@@ -340,18 +344,18 @@
                 }
               ?>
 
-              </div><!-- End sidebar recent posts-->
+            </div><!-- End sidebar recent posts-->
 
-            </div><!-- End sidebar -->
+          </div><!-- End sidebar -->
 
-          </div><!-- End blog sidebar -->
-
-        </div>
+        </div><!-- End blog sidebar -->
 
       </div>
-    </section><!-- End Blog Section -->
 
-  </main><!-- End #main -->
+    </div>
+  </section><!-- End Blog Section -->
+
+</main><!-- End #main -->
 <?php
 include_once('views/main/footer.php');
 ?>

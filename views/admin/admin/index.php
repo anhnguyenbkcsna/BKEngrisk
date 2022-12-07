@@ -85,6 +85,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                 <thead>
                                     <tr class="text-center">
                                         <th>STT</th>
+                                        <th>Vai trò</th>
                                         <th>Tên đăng nhập</th>
                                         <th>Cập nhật lần cuối</th>
                                         <th>Thao tác</th>

@@ -13,18 +13,18 @@ $(function () {
 });
 
 $(".btn-edit").click(function (e) {
-	var username = $(this).data("username");
-	var email = $(this).attr("data-email");
+	var username = $(this).data(un);
 	var fname = $(this).data("fname");
 	var lname = $(this).data("lname");
 	var gender = $(this).data("gender");
-	var yob = $(this).attr("data-yob");
+	var yob = $(this).data("yob");
+	var email = $(this).data("email");
 	var phone = $(this).data("phone");
 	var address = $(this).data("address");
 	var img = $(this).data("img");
 
 
-	$("#EditUserModal input[name='username']").val(username);
+	$("#EditUserModal input[name='name']").val(username);
 	$("#EditUserModal input[name='fname']").val(fname);
 	$("#EditUserModal input[name='lname']").val(lname);
 	$("#EditUserModal input[name='yob']").val(yob);
@@ -41,9 +41,9 @@ $(".btn-edit").click(function (e) {
 	$("#EditUserModal").modal("show");
 });
 
-$(".btn-changepass").click(function (e) {
-	var username = $(this).data("username");
-	$("#EditPassModal input[name='username']").val(username);
+$("btn-changepass").click(function (e) {
+	var email = $(this).data("email");
+	$("#EditPassModal input[name='email']").val(email);
 	$("#EditPassModal").modal("show");
 });
 

@@ -162,7 +162,6 @@ class User
 
     static function changePassword_($username, $newpassword)
     {
-        echo $username . $newpassword;
         $password = password_hash($newpassword, PASSWORD_DEFAULT);
         $db = DB::getInstance();
         $req = $db->query(

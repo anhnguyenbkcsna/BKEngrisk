@@ -3,11 +3,10 @@ session_start();
 if (!isset($_SESSION["role"]))
     header("Location: index.php?page=main&controller=login&action=index");
 
-// if (isset($_SESSION['user'])) {
-//     require_once('models/user.php');
-//     // $user = User::get($_SESSION['user']);
-// }
-
+if (isset($_SESSION['user'])) {
+    require_once('models/user.php');
+    $user_in = User::get($_SESSION['user']);
+}
 ?>
 <?php
 require_once('views/admin/header.php'); ?>
@@ -189,8 +188,8 @@ require_once('views/admin/content_layouts.php');
                                             echo "<td>" . $user->address . "</td>";
                                             echo "<td>" . $user->phone . "</td>";
                                             echo "<td>
-											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-email='$user->email' data-fname='$user->fname' data-lname='$user->lname' data-gender='$user->gender' data-age='$user->yob' data-phone='$user->phone' data-img='$user->profile_photo'> <i class='fas fa-edit'></i></btn>
-											<btn class='btn-changepass btn btn-warning btn-xs' style='margin-right: 5px' data-email='$user->email'> <i class='fas fa-lock'></i></btn>
+											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-un='$user->username' data-email='$user->email' data-fname='$user->fname' data-lname='$user->lname' data-gender='$user->gender' data-age='$user->yob' data-phone='$user->phone' data-img='$user->profile_photo'> <i class='fas fa-edit'></i></btn>
+											<btn class='btn-changepass btn btn-warning btn-xs' style='margin-right: 5px' data-email='$user->username'> <i class='fas fa-lock'></i></btn>
 											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-email='$user->username' data-img='$user->profile_photo'> <i class='fas fa-trash'></i></btn>
 											</td>";
                                             echo "</tr>";
@@ -215,7 +214,7 @@ require_once('views/admin/content_layouts.php');
                                                 <div class="form-group">
                                                     <label>Username</label>
                                                     <input class="form-control" type="text" placeholder="Username"
-                                                        name="username" id="username" />
+                                                        name='username' readonly />
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -316,7 +315,7 @@ require_once('views/admin/content_layouts.php');
                                                 <input type="hidden" name="id" />
                                                 <div class="form-group">
                                                     <label>Tên đăng nhập</label>
-                                                    <input class="form-control" type="text" name="username" readonly />
+                                                    <input class="form-control" type="text" name="name" readonly />
                                                 </div>
 
                                                 <div class="form-group">

@@ -5,7 +5,7 @@ if (!isset($_SESSION["role"]))
     header("Location: index.php?page=main&controller=login&action=index");
 if (isset($_SESSION['user'])) {
     require_once('models/user.php');
-    $user = User::get($_SESSION['user']);
+    $user_in = User::get($_SESSION['user']);
 }
 
 if ($_SESSION["role"] == 3)

@@ -48,7 +48,7 @@
                 <div class="user-panel d-flex">
                     <?php
                     echo ('
-                    <img src=' . $user->profile_photo . ' class="rounded-circle" style="width: 50px; margin: 20px 0px 20px 30px;"alt="Avatar">
+                    <img src=' . $user_in->profile_photo . ' class="rounded-circle" style="width: 50px; margin: 20px 0px 20px 30px;"alt="Avatar">
 							<div class="info" style="margin:auto;">
                            
 								

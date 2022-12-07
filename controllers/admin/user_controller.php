@@ -105,17 +105,9 @@ class UserController extends BaseController
 
 	public function editPass()
 	{
-		$username = $_POST['username'];
-		// $currentPassword = $_POST['current-password'];
-		// $check = User::validation($email, $currentPassword);
-		// if ($check == 1) {
-		// 	$newpassword = $_POST['new-password'];
-		// 	$change_pass = User::changePassword_($email, $newpassword);
-		// 	header('Location: index.php?page=admin&controller=user&action=index');
-		// } else {
-		// 	$this->render('wrong-pass');
-		// }
+		$username = $_POST['email'];
 		$newpassword = $_POST['new-password'];
+		// echo $username . ' ' . $newpassword;
 		$change_pass = User::changePassword_($username, $newpassword);
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}

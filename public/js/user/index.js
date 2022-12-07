@@ -13,8 +13,9 @@ $(".btn-edit").click(function (e) {
   var fname = $(this).data("fname");
   var lname = $(this).data("lname");
   var gender = $(this).data("gender");
-  var age = $(this).data("age");
+  var yob = $(this).data("yob");
   var phone = $(this).data("phone");
+  var email = $(this).data("email");
   var address = $(this).data("add");
   var img = $(this).data("img");
 
@@ -25,9 +26,10 @@ $(".btn-edit").click(function (e) {
   if (gender == "male") $("#EditUserModal #Nam").prop("checked", true);
   //Search checked input radio jquery
   else $("#EditUserModal #Nu").prop("checked", true);
-  $("#EditUserModal input[name='email']").val(email);
   $("#EditUserModal input[name='phone']").val(phone);
+  $("#EditUserModal input[name='email']").val(email);
   $("#EditUserModal input[name='img']").val(img);
+  $("#EditUserModal input[name='address']").val(address);
   $("#EditUserModal").modal("show");
 });
 

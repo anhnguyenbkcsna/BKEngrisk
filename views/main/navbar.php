@@ -1,64 +1,62 @@
 <?php
-  session_start();
-  if (isset($_SESSION['guest']))
-  {
-    require_once('models/user.php');
-    $data = User::get($_SESSION['guest']);
-  }
-  
+session_start();
+if (isset($_SESSION['user'])) {
+  require_once('models/user.php');
+  $data = User::get($_SESSION['user']);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>BKENGRISK</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>BKENGRISK</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="public/uploads/favicon.png" rel="icon">
+    <!-- Favicons -->
+    <link href="public/uploads/favicon.png" rel="icon">
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="public/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="public/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="public/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="public/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="public/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="public/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
-  <!-- Font Awesome-->
-  <link rel="stylesheet" href="public/plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables-->
-  <link rel="stylesheet" href="public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Theme style-->
-  <link rel="stylesheet" href="public/dist/css/adminlte.min.css">
-  <!-- Add Style -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="public/plugins/fontawesome-free/css/all.min.css">
+    <!-- DataTables-->
+    <link rel="stylesheet" href="public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style-->
+    <link rel="stylesheet" href="public/dist/css/adminlte.min.css">
+    <!-- Add Style -->
 
-  <link href="public/assets/css/style.css" rel="stylesheet">
+    <link href="public/assets/css/style.css" rel="stylesheet">
 
 
 
 </head>
 
 <body>
-  <?php
-  if (isset($_SESSION['guest']))
-  {
-  echo '
+    <?php
+  if (isset($_SESSION['user'])) {
+    echo '
     <div class="modal fade" id="EditUserModal" tabindex="-1" role="dialog" aria-labelledby="EditUserModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -99,13 +97,13 @@
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '1')?'checked':"") . ' value="1" />
+                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '1') ? 'checked' : "") . ' value="1" />
                         <label>Nam</label>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '0')?'checked':"") . ' value="0" />
+                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '0') ? 'checked' : "") . ' value="0" />
                         <label>Nữ</label>
                       </div>
                     </div>
@@ -138,51 +136,51 @@
   }
   ?>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
 
-      <div class="logo">
-        <h2><a href="index.php?page=main&controller=layouts&action=index">
-            BK<span style="color: #00BFFF;font-size: 3rem;">ENGRISK</span></a></h2>
-      </div>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="public/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            <div class="logo">
+                <h2><a href="index.php?page=main&controller=layouts&action=index">
+                        BK<span style="color: #00BFFF;font-size: 3rem;">ENGRISK</span></a></h2>
+            </div>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="public/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li>
-          <!-- <li><a href="index.php?page=main&controller=about&action=index">Về chúng tôi</a></li> -->
-          <li><a href="index.php?page=main&controller=services&action=index">Chương trình học</a></li>
-          <li><a href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
-          <li><a href="index.php?page=main&controller=archive&action=index">Chi nhánh</a></li>
-          <li><a href="index.php?page=main&controller=contact&action=index">Kết nối</a></li>
-          <?php
-          if (!isset($_SESSION["guest"])){
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li>
+                    <!-- <li><a href="index.php?page=main&controller=about&action=index">Về chúng tôi</a></li> -->
+                    <li><a href="index.php?page=main&controller=services&action=index">Chương trình học</a></li>
+                    <li><a href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
+                    <li><a href="index.php?page=main&controller=archive&action=index">Chi nhánh</a></li>
+                    <li><a href="index.php?page=main&controller=contact&action=index">Kết nối</a></li>
+                    <?php
+          if (!isset($_SESSION["user"])) {
             echo '
               <li><a href="index.php?page=main&controller=register&action=index" class="box-arrow-in-right"><i class="bu bi-file-lock-fill"></i></a></li> <!-- Đăng ký -->
               <li><a href="index.php?page=main&controller=login&action=index" class="box-arrow-in-right"><i class="bu bi-person-lines-fill"></i></a></li> <!-- Đăng nhập -->
             ';
-          }
-          else{
+          } else {
             echo '
             <li><a href="" data-toggle="modal" data-target="#EditUserModal"><img style="vertical-align: middle;
   width: 40px;
   height: 40px;
-  border-radius: 50%;" src="' . (file_exists($data->profile_photo) ? $data->profile_photo:"public/dist/img/avatar4.png") . '"></a></li>
+  border-radius: 50%;" src="' . (file_exists($data->profile_photo) ? $data->profile_photo : "public/dist/img/avatar4.png") . '"></a></li>
             <li><a href="index.php?page=main&controller=login&action=logout" class="box-arrow-in-right"><i class="bu bi-box-arrow-right"></i></a></li> <!-- Đăng xuất -->
             ';
           }
           ?>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
 
-      <div class="header-social-links d-flex">
-        <a href="https://www.facebook.com/VNGCorporation.Page/" class="facebook"><i class="bu bi-facebook"></i></a>
-        <a href="https://www.youtube.com/channel/UCk2jT9v-BOmjbPZ08LUbTVA" class="youtube"><i
-            class="bu bi-youtube"></i></a>
-      </div>
+            <div class="header-social-links d-flex">
+                <a href="https://www.facebook.com/VNGCorporation.Page/" class="facebook"><i
+                        class="bu bi-facebook"></i></a>
+                <a href="https://www.youtube.com/channel/UCk2jT9v-BOmjbPZ08LUbTVA" class="youtube"><i
+                        class="bu bi-youtube"></i></a>
+            </div>
 
-    </div>
-  </header><!-- End Header -->
+        </div>
+    </header><!-- End Header -->

@@ -29,7 +29,7 @@ require_once('views/admin/content_layouts.php'); ?>
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-8">
-                    <h1>Chào mừng bạn đã trợ lại hệ thống BK Engrisk</h1>
+                    <h1>Chào mừng bạn đã trở lại hệ thống BK Engrisk</h1>
                 </div>
                 <div class="col-sm-4">
                     <ol class="breadcrumb float-sm-right">
@@ -72,7 +72,7 @@ require_once('views/admin/content_layouts.php'); ?>
                             <li>
                                 <a href="index.php?page=admin&controller=users&action=index">
                                     <i class="fas fa-users-cog"></i>
-                                    Liên hệ khách hàng
+                                    Quản lý học viên
                                 </a>
                             </li>
                         </ul>
@@ -80,25 +80,32 @@ require_once('views/admin/content_layouts.php'); ?>
                     <!-- /.col -->
                     <div class="col-sm-6 invoice-col">
                         <ul style="list-style: none;">
-                            <!-- <li>
-                                <a href="index.php?page=admin&controller=admin&action=index">
-                                    <i class="fas fa-cube"></i>
-                                    Quản lý Sản phẩm
-                                </a>
-                            </li>
-
-                            <li>
+                            <?php
+                            if ($_SESSION['role'] == 0 || $_SESSION['role'] == 1) {
+                                echo ' <li>
                                 <a href="index.php?page=admin&controller=admin&action=index">
                                     <i class="fas fa-file"></i>
-                                    Quản lý tin tức
+                                    Quản lý khóa học
+                                </a></li> ';
+                            };
+                            ?>
+                            <li>
+                                <a href="index.php?page=admin&controller=admin&action=index">
+                                    <i class="fas fa-comment"></i>
+                                    Quản lý Lớp học
                                 </a>
-                            </li> -->
+                            </li>
+                            <?php
+                            if ($_SESSION['role'] == 0) {
+                                echo '
                             <li>
                                 <a href="index.php?page=admin&controller=user&action=index">
                                     <i class="fas fa-newspaper"></i>
                                     Danh sách chi nhánh
                                 </a>
-                            </li>
+                            </li>';
+                            };
+                            ?>
                         </ul>
                     </div>
                     <!-- /.col -->

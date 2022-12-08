@@ -23,7 +23,7 @@ class Company
             $companies[] = new Company(
                 $company['MaCN'],
                 $company['Ten'],
-                $company['Diachi']
+                $company['Duong']
             );
         }
         return $companies;

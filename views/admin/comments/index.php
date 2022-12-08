@@ -159,7 +159,7 @@ require_once('views/admin/content_layouts.php'); ?>
 require_once('views/admin/footer.php'); ?>
 
 <!-- Add Javascripts -->
-<!-- <script src="public/plugins/moment/moment.min.js"></script> -->
+<script src="public/plugins/moment/moment.min.js"></script>
 <script src="public/js/comments/index.js"></script>
 
 </body>

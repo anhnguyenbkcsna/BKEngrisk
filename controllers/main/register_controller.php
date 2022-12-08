@@ -33,7 +33,7 @@ class RegisterController extends BaseController
 	public function editInfo()
 	{
 		session_start();
-		$email = $_SESSION['guest'];
+		$email = $_SESSION['user'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
 		$gender = $_POST['gender'];
@@ -59,7 +59,7 @@ class RegisterController extends BaseController
 			$fileType != "jpg" && $fileType != "png" && $fileType != "jpeg"
 			&& $fileType != "gif"
 		) {
-			echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+			// echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
 			$upload_ok = 0;
 		}
 		if ($_FILES["fileToUpload"]["size"] > 500000) {

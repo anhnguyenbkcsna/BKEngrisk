@@ -1,4 +1,4 @@
-$(".table").DataTable({
+$("#tab-comments").DataTable({
   // dom: "Bfrtip", //Thêm dom vào thì nó sẽ hiện đồng thời giữa language và bottom
   responsive: true,
   lengthChange: false,
@@ -12,7 +12,6 @@ $(".btn-edit").click(function (e) {
   var id = $(this).data("id");
   var name = $(this).data("name");
   var content = $(this).data("content");
-  console.log(hehe);
   $("#EditStudentModal input[name='id']").val(id);
   $("#EditStudentModal input[name='content']").val(content);
   $("#EditStudentModal input[name='name']").val(name);

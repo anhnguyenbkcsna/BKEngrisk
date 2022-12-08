@@ -6,23 +6,23 @@
 
     <div class="carousel-inner" role="listbox">
 
-      <div class="carousel-item active" style="background-image: url(public/assets/img/slide/slide1.jpg);">
+      <div class="carousel-item active" style="background-image: url(public/assets/img/slide/slide2.jpg);">
         <div class="carousel-container d-flex flex-column justify-content-center align-items-center">
           <div
             class="carousel-content animate__animated animate__fadeInUp d-flex justify-content-center aligm-items-center flex-column flex-nowrap">
             <h1 class="text-center">Chào mừng đến trung tâm tiếng anh BK<span
                 style="color: #00BFFF; font-size: 4rem;">ENGRISK</span></h1>
           </div>
-          <button type="button" class="btn btn-outline-primary btn-lg mt-4"><a href="#content">Khám phá
+          <button type="button" class="btn btn-outline-info btn-lg mt-4"><a href="#content">Khám phá
               ngay</a></button>
         </div>
       </div>
-      <div class="carousel-item" style="background-image: url(public/assets/img/slide/slide3.jpg);">
+      <div class="carousel-item" style="background-image: url(public/assets/img/slide/slide1.jpg);">
         <div class="carousel-container d-flex flex-column justify-content-center align-items-center">
           <div class="carousel-content animate__animated animate__fadeInUp d-flex justify-content-center">
             <h2 class""">BK<span style="color: #00BFFF;font-size: 2rem;">ENGRISK</span> thay đổi con người bạn</h1>
           </div>
-          <button type="button" class="btn btn-outline-primary btn-lg mt-4"><a href="#content">Khám phá
+          <button type="button" class="btn btn-outline-info btn-lg mt-4"><a href="#content">Khám phá
               ngay</a></button>
         </div>
       </div>

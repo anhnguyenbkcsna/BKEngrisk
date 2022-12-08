@@ -34,6 +34,7 @@ class RegisterController extends BaseController
 	{
 		session_start();
 		$email = $_SESSION['user'];
+		$username= $_SESSION['user'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
 		$gender = $_POST['gender'];
@@ -69,7 +70,7 @@ class RegisterController extends BaseController
 		unlink($file_pointer);
 		move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 		// Update
-		$change_info = User::update($email, $target_file, $fname, $lname, $gender, $yob, $phone, $address);
+		$change_info = User::update($username, $target_file, $fname, $lname, $gender, $yob,$email, $phone, $address);
 		header('Location: index.php?page=main&controller=layouts&action=index');
 	}
 

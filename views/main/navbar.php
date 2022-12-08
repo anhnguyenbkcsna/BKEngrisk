@@ -90,7 +90,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Tuổi</label>
-                  <input class="form-control" type="number" placeholder="Tuổi" name="age" value="' . date('Y') - $data->yob . '"/>
+                  <input class="form-control" type="number" placeholder="Tuổi" name="age" value="' . $data->age . '"/>
                 </div>
               </div>
               <div class="col-md-6">
@@ -120,7 +120,7 @@
             </div>
             <div class="form-group">
               <label>Email</label>
-              <input class="form-control" type="email" placeholder="Email" name="email" value="' . $data->email . '"/> 
+              <input class="form-control" type="text" placeholder="email" name="email" value="' . $data->email . '"/> 
             </div>
             <div class="form-group">
               <label>Địa chỉ</label>

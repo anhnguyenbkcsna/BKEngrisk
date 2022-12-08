@@ -1,9 +1,9 @@
 <?php
   session_start();
-  if (isset($_SESSION['guest']))
+  if (isset($_SESSION['user']))
   {
     require_once('models/user.php');
-    $data = User::get($_SESSION['guest']);
+    $data = User::get($_SESSION['user']);
   }
   
 ?>
@@ -56,7 +56,7 @@
 
 <body>
   <?php
-  if (isset($_SESSION['guest']))
+  if (isset($_SESSION['user']))
   {
   echo '
     <div class="modal fade" id="EditUserModal" tabindex="-1" role="dialog" aria-labelledby="EditUserModal" aria-hidden="true">
@@ -154,11 +154,11 @@
           <li><a href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li>
           <!-- <li><a href="index.php?page=main&controller=about&action=index">Về chúng tôi</a></li> -->
           <li><a href="index.php?page=main&controller=services&action=index">Chương trình học</a></li>
-          <li><a href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
           <li><a href="index.php?page=main&controller=archive&action=index">Chi nhánh</a></li>
+          <li><a href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
           <li><a href="index.php?page=main&controller=contact&action=index">Kết nối</a></li>
           <?php
-          if (!isset($_SESSION["guest"])){
+          if (!isset($_SESSION["user"])){
             echo '
               <li><a href="index.php?page=main&controller=register&action=index" class="box-arrow-in-right"><i class="bu bi-file-lock-fill"></i></a></li> <!-- Đăng ký -->
               <li><a href="index.php?page=main&controller=login&action=index" class="box-arrow-in-right"><i class="bu bi-person-lines-fill"></i></a></li> <!-- Đăng nhập -->

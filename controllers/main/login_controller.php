@@ -32,8 +32,7 @@ class LoginController extends BaseController
 
 				if ($role == 3) {
 					header('Location: index.php?page=main&controller=layouts&action=index');
-				}
-				if ($role == 0) {
+				} else {
 					header('Location: index.php?page=admin&controller=layouts&action=index');
 				}
 			} else {

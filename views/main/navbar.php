@@ -99,13 +99,13 @@
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '1')?'checked':"") . ' value="1" />
+                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '1') ? 'checked' : "") . ' value="1" />
                         <label>Nam</label>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '0')?'checked':"") . ' value="0" />
+                        <input class="form-check-input" type="radio" name="gender"' . (($data->gender == '0') ? 'checked' : "") . ' value="0" />
                         <label>Nữ</label>
                       </div>
                     </div>
@@ -163,13 +163,12 @@
               <li><a href="index.php?page=main&controller=register&action=index" class="box-arrow-in-right"><i class="bu bi-file-lock-fill"></i></a></li> <!-- Đăng ký -->
               <li><a href="index.php?page=main&controller=login&action=index" class="box-arrow-in-right"><i class="bu bi-person-lines-fill"></i></a></li> <!-- Đăng nhập -->
             ';
-          }
-          else{
+          } else {
             echo '
             <li><a href="" data-toggle="modal" data-target="#EditUserModal"><img style="vertical-align: middle;
   width: 40px;
   height: 40px;
-  border-radius: 50%;" src="' . (file_exists($data->profile_photo) ? $data->profile_photo:"public/dist/img/avatar4.png") . '"></a></li>
+  border-radius: 50%;" src="' . (file_exists($data->profile_photo) ? $data->profile_photo : "public/dist/img/avatar4.png") . '"></a></li>
             <li><a href="index.php?page=main&controller=login&action=logout" class="box-arrow-in-right"><i class="bu bi-box-arrow-right"></i></a></li> <!-- Đăng xuất -->
             ';
           }

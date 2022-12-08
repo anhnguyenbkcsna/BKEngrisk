@@ -63,7 +63,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Chỉnh sửa</h5>
+          <h5 class="modal-title">Chỉnh sửa thông tin</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <form action="index.php?page=main&controller=register&action=editInfo" enctype="multipart/form-data" method="post">
@@ -90,7 +90,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Tuổi</label>
-                  <input class="form-control" type="number" placeholder="Tuổi" name="age" value="' . $data->age . '"/>
+                  <input class="form-control" type="number" placeholder="Tuổi" name="age" value="' . date('Y') - $data->yob . '"/>
                 </div>
               </div>
               <div class="col-md-6">
@@ -117,6 +117,14 @@
             <div class="form-group">
               <label>Số điện thoại</label>
               <input class="form-control" type="number" placeholder="Số điện thoại" name="phone" value="' . $data->phone . '"/>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input class="form-control" type="email" placeholder="Email" name="email" value="' . $data->email . '"/> 
+            </div>
+            <div class="form-group">
+              <label>Địa chỉ</label>
+              <input class="form-control" type="text" placeholder="Địa chỉ" name="address" value="' . $data->address . '"/>
             </div>
             <div class="form-group">
               <label>Hình ảnh hiện tại </label>

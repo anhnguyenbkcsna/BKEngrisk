@@ -1941,3 +1941,10 @@ section {
 .main-timeline5 .timeline-content:before,.main-timeline5 .timeline:nth-child(2n) .timeline-content:before{width:15px;height:25px;position:absolute;top:-22px;left:50%;z-index:-1;transform:translate(-50%,0)}
 }
 
+.visible {
+  visibility: visible;
+}
+.invisible {
+  visibility: hidden;
+}
+

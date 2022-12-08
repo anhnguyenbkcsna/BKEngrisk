@@ -1,5 +1,11 @@
 <?php
 include_once('views/main/navbar.php');
+  session_start();
+  if (isset($_SESSION['user']))
+  {
+    require_once('models/user.php');
+    $data = User::get($_SESSION['user']);
+  }
 ?>
 <main id="main">
 
@@ -39,7 +45,10 @@ include_once('views/main/navbar.php');
                     <span>Số lượng: 30 người</span>
                   </p>
                   <p class="mt-2">Học phí: <span style="color: #00BFFF;font-size: 3rem;">10.000.000</span></p>
-                  <button type="button" class="btn btn-outline-info mt-3">XEM THÊM</button>
+                  <div>
+                    <button type="button" class="btn btn-outline-info mt-3">XEM THÊM</button>
+                    <button type="button" class="btn btn-outline-info mt-3" style="' .(!isset($_SESSION["user"]) ? "display: none !important;": "").'" >ĐĂNG KÝ</button>
+                  </div>
                 </div>
               </div>
             </div>

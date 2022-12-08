@@ -1,6 +1,6 @@
 <?php
 require_once('controllers/main/base_controller.php');
-require_once('models/product.php');
+require_once('models/comment.php');
 
 class ServicesController extends BaseController
 {
@@ -8,11 +8,11 @@ class ServicesController extends BaseController
 	{
 		$this->folder = 'services';
 	}
-
+	
 	public function index()
 	{
-		$products = Product::getAll();
-		$data = array('products' => $products);
+		$comments = Comment::getAll();
+		$data = array('comments' => $comments);
 		$this->render('index', $data);
 	}
 }

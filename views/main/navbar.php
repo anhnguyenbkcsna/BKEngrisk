@@ -140,7 +140,7 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
         <h2><a href="index.php?page=main&controller=layouts&action=index">
@@ -154,9 +154,9 @@
           <li><a href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li>
           <!-- <li><a href="index.php?page=main&controller=about&action=index">Về chúng tôi</a></li> -->
           <li><a href="index.php?page=main&controller=services&action=index">Chương trình học</a></li>
-          <li><a href="index.php?page=main&controller=archive&action=index">Chi nhánh</a></li>
-          <li><a href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
-          <li><a href="index.php?page=main&controller=contact&action=index">Kết nối</a></li>
+          <!-- <li><a href="index.php?page=main&controller=archive&action=index">Chi nhánh</a></li>
+          <li><a href="index.php?page=main&controller=blog&action=index">Tin tức</a></li> -->
+          <li><a href="index.php?page=main&controller=contact&action=index">Chi nhánh</a></li>
           <?php
           if (!isset($_SESSION["user"])){
             echo '
@@ -177,11 +177,11 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <div class="header-social-links d-flex">
+      <!-- <div class="header-social-links d-flex">
         <a href="https://www.facebook.com/VNGCorporation.Page/" class="facebook"><i class="bu bi-facebook"></i></a>
         <a href="https://www.youtube.com/channel/UCk2jT9v-BOmjbPZ08LUbTVA" class="youtube"><i
             class="bu bi-youtube"></i></a>
-      </div>
+      </div> -->
 
     </div>
   </header><!-- End Header -->

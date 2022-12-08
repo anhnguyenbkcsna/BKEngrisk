@@ -176,7 +176,7 @@ require_once('views/admin/content_layouts.php');
                                 <tbody>
                                     <?php
                                     $index = 1;
-                                    if ($user_in->role == 0 && $user_in->role == 1) {
+                                    if ($user_in->role == 0 || $user_in->role == 1) {
                                         foreach ($user as $user) {
                                             if ($user->role == 3) {
                                                 echo "<tr class='text-center' style='height:300px; line-height:300px; white-space: nowrap;'>";

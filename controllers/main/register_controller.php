@@ -91,4 +91,11 @@ class RegisterController extends BaseController
 		$delete_user = User::delete($email);
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}
+
+	// public function checkUsername()
+	// {
+	// 	$username = $_POST['username'];
+	// 	$checkUsername = User::checkUsername($username);
+	// 	header('Location: index.php?page=main&controller=login&action=index');
+	// }
 }

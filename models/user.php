@@ -154,4 +154,14 @@ class User
         );
         return $req;
     }
+
+    static function checkUsername($username)
+    {
+        $db = DB::getInstance();
+        $req = $db->query(
+            "SELECT * FROM taikhoan WHERE TenDangNhap='$username'"
+        );
+        if ($req->rowCount() == 0) return true;
+        else false;
+    }
 }

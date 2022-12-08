@@ -44,11 +44,10 @@
                     </span>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="username is required">
-
-
                         <input class="input100" type="text" name="username" required>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Username</span>
+
                     </div>
 
 

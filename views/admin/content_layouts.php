@@ -88,30 +88,46 @@
                                 <p>Quản lý học viên</p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <?php
+                        if ($_SESSION['role'] == 0 || $_SESSION['role'] == 1) {
+                            echo ' <li class="nav-item">
                             <a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
-                                <i class="nav-icon fas fa-comments"></i>
-                                <p>Bình luận đánh giá</p>
+                                <i class="nav-icon fas fa-file"></i>
+                                <p>Quản lý khóa học</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li>';
+                        }; ?>
+                        <?php
+
+                        echo ' <li class="nav-item">
+                            <a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+                                <i class="nav-icon fas fa-comment"></i>
+                                <p>Quản lý Lớp học</p>
+                            </a>
+                        </li>';
+                        ?>
+
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="index.php?page=admin&controller=products&action=index">
                                 <i class="nav-icon fas fa-cube"></i>
-                                <p>Quản lý Sản phẩm</p>
+                                <p>Quản lý Lớp họcm</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="index.php?page=admin&controller=news&action=index">
                                 <i class="nav-icon fa fa-file" aria-hidden="true"></i>
                                 <p>Quản lý tin tức</p>
                             </a>
                         </li> -->
-                        <li class="nav-item">
+                        <?php
+                        if ($_SESSION['role'] == 0) {
+                            echo '<li class="nav-item">
                             <a class="nav-link" href="index.php?page=admin&controller=company&action=index">
                                 <i class="nav-icon fa fa-newspaper" aria-hidden="true"></i>
                                 <p>Danh sách chi nhánh</p>
                             </a>
-                        </li>
+                        </li>';
+                        }; ?>
                     </ul>
                     <!-- Content Wrapper. Contains page content-->
                 </nav>

@@ -38,56 +38,58 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <form action="index.php?page=main&controller=register&action=submit" method="POST"
-                    class="login100-form validate-form">
+                    class="login100-form validate-form needs-validation">
                     <span class="login100-form-title p-b-20">
                         <strong>ĐĂNG KÝ</strong>
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="username is required">
-                        <input class="input100" type="text" name="username">
-                        <span class="focus-input100"></span>
+                        <input class="input100" type="text" name="username" required>
+                        <!-- <span class="focus-input100"></span> -->
                         <span class="label-input100">Username</span>
                     </div>
 
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass">
+                        <input class="input100" type="password" name="pass" required>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Password</span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Fname is required">
-                        <input class="input100" type="text" name="fname">
+                        <input class="input100" type="text" name="fname" required>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Họ</span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Lname is required">
-                        <input class="input100" type="text" name="lname">
+                        <input class="input100" type="text" name="lname" required>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Tên</span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email">
+                        <input class="input100" type="text" name="email" onkeyup='ValidateEmail(this)'>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Email</span>
+                        <span id='email_warning'></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Year is required">
-                        <input class="input100" type="number" name="yob">
+                        <input class="input100" type="number" name="yob" onkeyup="ValidateAge(this)" required>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Năm sinh</span>
+                        <span id='age_warning'></span>
                     </div>
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="number" name="phone">
+                        <input class="input100" type="number" name="phone" required>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Số điện thoại</span>
                     </div>
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="address">
+                        <input class="input100" type="text" name="address" required>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Địa chỉ</span>
                     </div>
@@ -137,5 +139,26 @@
     </div>
 
 </body>
+
+<script>
+function ValidateEmail(inputText) {
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (inputText.value.match(mailformat)) {
+        document.getElementById('email_warning').style.color = 'green';
+        document.getElementById('email_warning').innerHTML = 'Valid';
+    } else {
+        document.getElementById('email_warning').style.color = 'red';
+        document.getElementById('email_warning').innerHTML = 'Not valid';
+    }
+}
+
+function ValidateAge(age) {
+    document.getElementById('age_warning').innerHTML = '';
+    if ((age.value <= 1900 || age.value > 2022)) {
+        document.getElementById('age_warning').style.color = 'red';
+        document.getElementById('age_warning').innerHTML = 'Not valid';
+    }
+}
+</script>
 
 </html>

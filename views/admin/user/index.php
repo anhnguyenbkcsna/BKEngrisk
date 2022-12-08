@@ -176,23 +176,43 @@ require_once('views/admin/content_layouts.php');
                                 <tbody>
                                     <?php
                                     $index = 1;
-                                    foreach ($user as $user) {
-                                        if ($user->role == 3) {
-                                            echo "<tr class='text-center' style='height:300px; line-height:300px; white-space: nowrap;'>";
-                                            echo "<td>" . $index++ . "</td>";
-                                            echo "<td>" . $user->username . "</td>";
-                                            echo "<td>" . $user->fname . " " . $user->lname . "</td>";
-                                            echo "<td>" . (($user->gender == 'male') ? "Nam" : "Nữ") . "</td>";
-                                            echo "<td>" . $user->yob . "</td>";
-                                            echo "<td>" . $user->email . "</td>";
-                                            echo "<td>" . $user->address . "</td>";
-                                            echo "<td>" . $user->phone . "</td>";
-                                            echo "<td>
+                                    if ($user_in->role == 0 && $user_in->role == 1) {
+                                        foreach ($user as $user) {
+                                            if ($user->role == 3) {
+                                                echo "<tr class='text-center' style='height:300px; line-height:300px; white-space: nowrap;'>";
+                                                echo "<td>" . $index++ . "</td>";
+                                                echo "<td>" . $user->username . "</td>";
+                                                echo "<td>" . $user->fname . " " . $user->lname . "</td>";
+                                                echo "<td>" . (($user->gender == 'male') ? "Nam" : "Nữ") . "</td>";
+                                                echo "<td>" . $user->yob . "</td>";
+                                                echo "<td>" . $user->email . "</td>";
+                                                echo "<td>" . $user->address . "</td>";
+                                                echo "<td>" . $user->phone . "</td>";
+                                                echo "<td>
 											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px;' data-acc='$user->username' data-email='$user->email' data-fname='$user->fname' data-lname='$user->lname' data-gender='$user->gender' data-yob='$user->yob' data-phone='$user->phone' data-img='$user->profile_photo' data-add='$user->address'> <i class='fas fa-edit'></i></btn>
 											<btn class='btn-changepass btn btn-warning btn-xs' style='margin-right: 5px;' data-email='$user->username'> <i class='fas fa-lock'></i></btn>
 											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px;' data-email='$user->username' data-img='$user->profile_photo'> <i class='fas fa-trash'></i></btn>
 											</td>";
-                                            echo "</tr>";
+                                                echo "</tr>";
+                                            }
+                                        }
+                                    } else {
+                                        foreach ($user as $user) {
+                                            if ($user->role == 3) {
+                                                echo "<tr class='text-center' style='height:300px; line-height:300px; white-space: nowrap;'>";
+                                                echo "<td>" . $index++ . "</td>";
+                                                echo "<td>" . $user->username . "</td>";
+                                                echo "<td>" . $user->fname . " " . $user->lname . "</td>";
+                                                echo "<td>" . (($user->gender == 'male') ? "Nam" : "Nữ") . "</td>";
+                                                echo "<td>" . $user->yob . "</td>";
+                                                echo "<td>" . $user->email . "</td>";
+                                                echo "<td>" . $user->address . "</td>";
+                                                echo "<td>" . $user->phone . "</td>";
+                                                echo "<td>
+											    <btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px;' data-acc='$user->username' data-email='$user->email' data-fname='$user->fname' data-lname='$user->lname' data-gender='$user->gender' data-yob='$user->yob' data-phone='$user->phone' data-img='$user->profile_photo' data-add='$user->address'> <i class='fas fa-edit'></i></btn>
+												</td>";
+                                                echo "</tr>";
+                                            }
                                         }
                                     }
                                     ?>

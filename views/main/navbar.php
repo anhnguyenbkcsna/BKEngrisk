@@ -153,8 +153,8 @@ if (isset($_SESSION['user'])) {
                     <!-- <li><a href="index.php?page=main&controller=about&action=index">Về chúng tôi</a></li> -->
                     <li><a href="index.php?page=main&controller=services&action=index">Chương trình học</a></li>
                     <li><a href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
-                    <li><a href="index.php?page=main&controller=archive&action=index">Chi nhánh</a></li>
-                    <li><a href="index.php?page=main&controller=contact&action=index">Kết nối</a></li>
+                    <li><a href="index.php?page=main&controller=archive&action=index">Khóa học</a></li>
+                    <li><a href="index.php?page=main&controller=contact&action=index">Chi nhánh</a></li>
                     <?php
           if (!isset($_SESSION["user"])) {
             echo '

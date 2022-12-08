@@ -172,7 +172,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                 </div>
                             </div>
 
-                            <table class="table table-bordered table-striped" id="tab-admin">
+                            <table class="table table-bordered table-striped" id="tab-user">
                                 <thead>
                                     <tr class="text-center">
                                         <th>STT</th>

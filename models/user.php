@@ -97,7 +97,6 @@ class User
 
     static function insert($username, $password, $fname, $lname, $gender, $email, $yob, $phone, $address, $profile_photo, $role = 3)
     {
-        $password = password_hash($password, PASSWORD_DEFAULT);
         $db = DB::getInstance();
         $req = $db->query(
             "
@@ -138,7 +137,7 @@ class User
     {
         $db = DB::getInstance();
         $req = $db->query("SELECT * FROM taikhoan WHERE TenDangNhap = '$username'");
-        if (@password_verify($password, $req->fetch_assoc()['MatKhau']))
+        if ($password == $req->fetch_assoc()['MatKhau'])
             return true;
         else
             return false;

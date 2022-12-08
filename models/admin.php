@@ -139,7 +139,7 @@ class Admin
     {
         $db = DB::getInstance();
         $req = $db->query("SELECT * FROM taikhoan WHERE TenDangNhap = '$username'");
-        if (@password_verify($password, $req->fetch_assoc()['MatKhau']))
+        if ($password == $req->fetch_assoc()['MatKhau'])
             return true;
         else
             return false;
@@ -147,11 +147,11 @@ class Admin
 
     static function changePassword_($username, $newpassword)
     {
-        $password = password_hash($newpassword, PASSWORD_DEFAULT);
+
         $db = DB::getInstance();
         $req = $db->query(
             "UPDATE taikhoan
-                SET MatKhau = '$password', updateAt = NOW()
+                SET MatKhau = '$newpassword', updateAt = NOW()
                 WHERE TenDangNhap = '$username';"
         );
         return $req;

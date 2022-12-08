@@ -40,12 +40,14 @@
                 <form action="index.php?page=main&controller=register&action=submit" method="POST"
                     class="login100-form validate-form needs-validation">
                     <span class="login100-form-title p-b-20">
-                        <strong>ĐĂNG KÝ</strong>
+                        <strong>ĐĂNG KÝ TÀI KHOẢN HỌC VIÊN</strong>
                     </span>
 
-                    <div class="wrap-input100 validate-input" data-validate="username is required">
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="username is required">
+
+
                         <input class="input100" type="text" name="username" required>
-                        <!-- <span class="focus-input100"></span> -->
+                        <span class="focus-input100"></span>
                         <span class="label-input100">Username</span>
                     </div>
 
@@ -55,6 +57,13 @@
                         <span class="focus-input100"></span>
                         <span class="label-input100">Password</span>
                     </div>
+                    <div class="wrap-input100 validate-input" data-validate="Retype password is required">
+                        <input onkeyup='check();' required class="input100" type="password" name="retype_password">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        <span class="label-input100">Retype Password</span>
+                        <span id='message'></span>
+                    </div>
+
 
                     <div class="wrap-input100 validate-input" data-validate="Fname is required">
                         <input class="input100" type="text" name="fname" required>
@@ -83,9 +92,11 @@
                     </div>
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="number" name="phone" required>
+                        <input class="input100" type="number" name="phone" onkeyup="ValidatePhone(this)" size=10
+                            required>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Số điện thoại</span>
+                        <span id='phone_warning'></span>
                     </div>
 
                     <div class="wrap-input100 validate-input">
@@ -131,8 +142,7 @@
                     </div>
                 </form>
 
-                <div class="login100-more"
-                    style="background-size: 1000px; background-image: url('https://www.passerellesnumeriques.org/wp-content/uploads/2018/10/KMS-Technology.png');">
+                <div class="login100-more" style="background-size: 1000px; background-color:aliceblue;">
                 </div>
             </div>
         </div>
@@ -141,6 +151,18 @@
 </body>
 
 <script>
+var check = function() {
+    let psw1 = document.getElementsByName("pass");
+    let psw2 = document.getElementsByName("retype_password");
+    if (psw1[0].value === psw2[0].value) {
+        document.getElementById('message').style.color = 'green';
+        document.getElementById('message').innerHTML = 'Matching';
+    } else {
+        document.getElementById('message').style.color = 'red';
+        document.getElementById('message').innerHTML = 'Not matching';
+    }
+}
+
 function ValidateEmail(inputText) {
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (inputText.value.match(mailformat)) {
@@ -157,6 +179,14 @@ function ValidateAge(age) {
     if ((age.value <= 1900 || age.value > 2022)) {
         document.getElementById('age_warning').style.color = 'red';
         document.getElementById('age_warning').innerHTML = 'Not valid';
+    }
+}
+
+function ValidatePhone(phone) {
+    document.getElementById('phone_warning').innerHTML = '';
+    if (phone.value.length != 10) {
+        document.getElementById('phone_warning').style.color = 'red';
+        document.getElementById('phone_warning').innerHTML = 'not valid';
     }
 }
 </script>
